@@ -1,15 +1,17 @@
 using UnityEngine;
+using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class Bullet : MonoBehaviour
 {
     [SerializeField] private float TimeAlive = 2f;
     [SerializeField] private Rigidbody rb;
-    [SerializeField] private float MoveSpeed = 10f;
+    [SerializeField] private float MoveSpeed = 100f;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.linearVelocity = transform.right * MoveSpeed;
+        Vector3 transformdown = transform.up * -1.0f;
+        rb.linearVelocity = transformdown * MoveSpeed;
     }
 
     // Update is called once per frame
