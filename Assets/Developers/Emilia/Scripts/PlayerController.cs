@@ -32,6 +32,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && ShootingCooldown <= 0f)
         {
+            Debug.Log("het werkt");
             Instantiate(Bullet, transform.position, transform.rotation);
             ShootingCooldown = 0;
             ShootingCooldown += BaseCooldown;
