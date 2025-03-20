@@ -7,6 +7,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float ShootingCooldown;         // current cooldown for shooting
     public float speed = 6.0f;
     private CharacterController controller;
+    public Rigidbody rb;
 
     void Start()
     {
@@ -24,6 +25,7 @@ public class PlayerController : MonoBehaviour
         controller.Move(moveVec * speed * Time.deltaTime);
 
         ShootingCooldown -= Time.deltaTime;
+        ShootBullet();
     }
 
     // Instantiate bullet prefab
