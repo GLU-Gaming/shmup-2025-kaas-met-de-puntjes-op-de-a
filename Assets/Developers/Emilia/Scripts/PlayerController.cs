@@ -20,4 +20,7 @@ public class PlayerController : MonoBehaviour
 
         controller.Move(moveVec * speed * Time.deltaTime);
     }
+
+    // Instantiate bullet prefab
+    //
 }
