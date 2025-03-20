@@ -4,10 +4,11 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] private float TimeAlive = 2f;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private float MoveSpeed = 10f;
 
     private void Start()
     {
-        //rb.AddForce();
+        rb.linearVelocity = transform.right * MoveSpeed;
     }
 
     // Update is called once per frame
