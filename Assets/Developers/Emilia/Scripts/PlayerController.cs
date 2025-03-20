@@ -7,7 +7,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float ShootingCooldown;         // current cooldown for shooting
     public float speed = 6.0f;
     private CharacterController controller;
-    public Rigidbody rb;
 
     void Start()
     {
@@ -16,13 +15,13 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
+        float horizontal = Input.GetAxis("Horizontal");         // get horizontal axis
+        float vertical = Input.GetAxis("Vertical");         // get vertical axis
 
-        Vector3 moveVec = new Vector3(horizontal, 0, vertical);
+        Vector3 moveVec = new Vector3(horizontal, 0, vertical);         //create new Vector3
         moveVec = moveVec.normalized;
 
-        controller.Move(moveVec * speed * Time.deltaTime);
+        controller.Move(moveVec * speed * Time.deltaTime);          //beweegt controller
 
         ShootingCooldown -= Time.deltaTime;
         ShootBullet();

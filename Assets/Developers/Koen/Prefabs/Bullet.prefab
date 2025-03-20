@@ -152,5 +152,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimeAlive: 10
-  rb: {fileID: 8363679764146109918}
+  rb: {fileID: 0}
   MoveSpeed: 10
