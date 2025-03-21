@@ -1,16 +1,29 @@
 using UnityEngine;
 
-public class Enemy : MonoBehaviour
+public abstract class Enemy : MonoBehaviour //abstract zorgt dat enemies zelf niet geinstantiate 
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
-        
+
     }
 
-    // Update is called once per frame
+    virtual protected void DamageOnExit()
+    {
+
+    }
+
+    virtual protected void DespawsnOnExit()
+    {
+
+    }
+
+    virtual protected void GetHit()
+    {
+
+    }
+
     void Update()
     {
-        
+
     }
 }
