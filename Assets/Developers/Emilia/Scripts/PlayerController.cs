@@ -30,9 +30,8 @@ public class PlayerController : MonoBehaviour
     // Instantiate bullet prefab
     void ShootBullet()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && ShootingCooldown <= 0f)
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            Debug.Log("het werkt");
             Instantiate(Bullet, transform.position, transform.rotation);
             ShootingCooldown = 0;
             ShootingCooldown += BaseCooldown;
