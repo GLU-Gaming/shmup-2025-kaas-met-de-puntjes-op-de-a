@@ -12,8 +12,6 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
     private GameObject player;
     public PlayerController playerScript;
 
-    [SerializeField] private float pizzaFishDamage = 50;
-
     private void Start()
     {
         player = GameObject.FindWithTag("Player");
