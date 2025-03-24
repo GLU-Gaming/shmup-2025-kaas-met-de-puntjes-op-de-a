@@ -155,4 +155,3 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   health: 100
   damage: 50
-  playerScript: {fileID: 0}
