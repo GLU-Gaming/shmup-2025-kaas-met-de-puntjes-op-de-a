@@ -28,7 +28,7 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
         rb.linearVelocity = transformdown * MoveSpeed;
     }
 
-    virtual protected void DespawsnOnExit()
+    public virtual void DespawsnOnExit()
     {
         if (transform.position.x <= leftBottom.x - 3)                                                                        // Als de transform van het object aan de linkerkant het scherm verlaat
         {
@@ -36,7 +36,7 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
         }
     }
 
-    virtual protected void OnCollisionEnter()
+    public virtual void OnCollisionEnter()
     {
         if (gameObject.tag == "Player")                                                                                // Als het object de tag "Player" heeft
         {
@@ -44,20 +44,10 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
         }
     }
 
-    virtual protected void DamageOnExit()
-    {
-        if (transform.position.x < leftBottom.x)                                                                        // Als de transform van het object aan de linkerkant het scherm verlaat
-        {
-            if (gameObject.tag == "PizzaFish")
-            {
-                playerScript.health -= pizzaFishDamage;
-            }
-        }
-    }
+
 
     void Update()
     {
         DespawsnOnExit();
-        DamageOnExit();
     }
 }

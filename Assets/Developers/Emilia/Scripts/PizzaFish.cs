@@ -6,14 +6,16 @@ public class PizzaFish : Enemy
     [SerializeField] public float health = 100;
     [SerializeField] public float damage = 50;
 
-    void Start()
+
+
+    public override void DespawsnOnExit()
     {
-
+        playerScript.Playerhealth -= damage;
+        base.DespawsnOnExit();
     }
-
 
     void Update()
     {
-        DamageOnExit();
+        DespawsnOnExit();
     }
 }
