@@ -153,5 +153,6 @@ MonoBehaviour:
   leftBottom: {x: 0, y: 0, z: 0}
   MoveSpeed: 2
   playerScript: {fileID: 0}
+  pizzaFishDamage: 50
   health: 100
   damage: 50
