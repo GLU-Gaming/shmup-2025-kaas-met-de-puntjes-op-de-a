@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour
     public float speed = 6.0f;
     private CharacterController controller;
 
+    [SerializeField] public float health = 500;
+
     void Start()
     {
         controller = GetComponent<CharacterController>();

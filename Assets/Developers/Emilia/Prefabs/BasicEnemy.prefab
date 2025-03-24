@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 5142734142495672446}
   - component: {fileID: 4467849336230958620}
   - component: {fileID: 443003001008262627}
+  - component: {fileID: -4773049973809654486}
   m_Layer: 0
   m_Name: BasicEnemy
-  m_TagString: Untagged
+  m_TagString: PizzaFish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,3 +137,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 116
   m_CollisionDetection: 0
+--- !u!114 &-4773049973809654486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8575507396772088177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8fc4c7d9e8a24c74d8b0c2855c69e816, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rightTop: {x: 0, y: 0, z: 0}
+  leftBottom: {x: 0, y: 0, z: 0}
+  MoveSpeed: 2
+  playerScript: {fileID: 0}
+  health: 100
+  damage: 50
+  playerScript: {fileID: 0}
