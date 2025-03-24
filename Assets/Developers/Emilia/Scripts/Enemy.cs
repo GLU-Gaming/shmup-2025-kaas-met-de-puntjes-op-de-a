@@ -34,13 +34,13 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
         }
     }
 
-    public virtual void OnCollisionEnter()
-    {
-        if (gameObject.tag == "Player")                                                                                // Als het object de tag "Player" heeft
-        {
-            Destroy(gameObject);                                                                                        // verwijder het object
-        }
-    }
+    //public virtual void OnCollisionEnter()
+    //{
+    //    if (gameObject.tag == "Player")                                                                                // Als het object de tag "Player" heeft
+    //    {
+    //        Destroy(gameObject);                                                                                        // verwijder het object
+    //    }
+    //}
 
 
 

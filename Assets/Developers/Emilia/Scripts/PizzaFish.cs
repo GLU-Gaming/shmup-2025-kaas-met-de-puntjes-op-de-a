@@ -21,4 +21,13 @@ public class PizzaFish : Enemy
     {
         DespawsnOnExit();
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Player")                                                                                // Als het object de tag "Player" heeft
+        {
+            Debug.Log("geraakt");
+            playerScript.Playerhealth -= damage;                                                                                 // doe damage
+        }
+    }
 }
