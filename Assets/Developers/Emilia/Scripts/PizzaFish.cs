@@ -1,3 +1,4 @@
+using System.Runtime.CompilerServices;
 using UnityEngine;
 
 public class PizzaFish : Enemy
@@ -5,7 +6,7 @@ public class PizzaFish : Enemy
 
     [SerializeField] public float health = 100;
     [SerializeField] public float damage = 50;
-
+    private float damageCooldown; 
 
 
     public override void DespawsnOnExit()
@@ -19,15 +20,18 @@ public class PizzaFish : Enemy
 
     void Update()
     {
+        damageCooldown -= Time.deltaTime;
         DespawsnOnExit();
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider collision)
     {
-        if (collision.gameObject.tag == "Player")                                                                                // Als het object de tag "Player" heeft
+        if (collision.gameObject.tag == "Player" && damageCooldown <= 0)                                                                                // Als het object de tag "Player" heeft
         {
             Debug.Log("geraakt");
             playerScript.Playerhealth -= damage;                                                                                 // doe damage
+            damageCooldown = 0;
+            damageCooldown += 2f;
         }
     }
 }
