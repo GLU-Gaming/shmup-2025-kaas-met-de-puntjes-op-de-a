@@ -19,8 +19,8 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
     }
     void Awake()
     {
-        rightTop = Camera.main.ViewportToWorldPoint(new Vector3(1f, 1f, 20f));                                          // haalt boven rechtse hoek van het speelveld  
-        leftBottom = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 20f));                                        // haalt linker onderste hoek van het speelveld
+        rightTop = Camera.main.ViewportToWorldPoint(new Vector3(1f, 1f, 20f));                                                  // haalt boven rechtse hoek van het speelveld  
+        leftBottom = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 20f));                                                // haalt linker onderste hoek van het speelveld
         rb = GetComponent<Rigidbody>();
         Vector3 transformdown = transform.right * -1f;
         rb.linearVelocity = transformdown * MoveSpeed;
@@ -28,19 +28,19 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
 
     public virtual void DespawsnOnExit()
     {
-        if (transform.position.x <= leftBottom.x - 3)                                                                        // Als de transform van het object aan de linkerkant het scherm verlaat
+        if (transform.position.x <= leftBottom.x - 3)                                                                           // Als de transform van het object aan de linkerkant het scherm verlaat
         {
-            Destroy(gameObject);                                                                                        // verwijder het object
+            Destroy(gameObject);                                                                                                // verwijder het object
         }
     }
 
-    //public virtual void OnCollisionEnter()
-    //{
-    //    if (gameObject.tag == "Player")                                                                                // Als het object de tag "Player" heeft
-    //    {
-    //        Destroy(gameObject);                                                                                        // verwijder het object
-    //    }
-    //}
+    public virtual void OnTriggerEnter(Collider collission)
+    {
+        if (collission.gameObject.tag == "Bullet")                                                                              // Als het object de tag "Player" heeft
+        {
+            Destroy(gameObject);                                                                                                // verwijder het object
+        }
+    }
 
 
 

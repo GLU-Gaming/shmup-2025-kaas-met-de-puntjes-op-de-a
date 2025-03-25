@@ -24,7 +24,7 @@ public class PizzaFish : Enemy
         DespawsnOnExit();
     }
 
-    public void OnTriggerEnter(Collider collision)
+    public override void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player" && damageCooldown <= 0)                                                                                // Als het object de tag "Player" heeft
         {
@@ -33,5 +33,6 @@ public class PizzaFish : Enemy
             damageCooldown = 0;
             damageCooldown += 2f;
         }
+        base.OnTriggerEnter(collision);
     }
 }
