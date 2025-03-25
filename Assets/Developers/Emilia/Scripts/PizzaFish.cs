@@ -28,7 +28,6 @@ public class PizzaFish : Enemy
     {
         if (collision.gameObject.tag == "Player" && damageCooldown <= 0)                                                                                // Als het object de tag "Player" heeft
         {
-            Debug.Log("geraakt");
             playerScript.Playerhealth -= damage;                                                                                 // doe damage
             damageCooldown = 0;
             damageCooldown += 2f;
