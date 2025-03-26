@@ -17,13 +17,33 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        float horizontal = Input.GetAxis("Horizontal");         // get horizontal axis
-        float vertical = Input.GetAxis("Vertical");         // get vertical axis
+        //float horizontal = Input.GetAxis("Horizontal");                         // get horizontal axis
+        //float vertical = Input.GetAxis("Vertical");                             // get vertical axis
 
-        Vector3 moveVec = new Vector3(horizontal, 0, vertical);         //create new Vector3
-        moveVec = moveVec.normalized;
+        //Vector3 moveVec = new Vector3(horizontal, 0, vertical);                 //create new Vector3
+        //moveVec = moveVec.normalized;
 
-        controller.Move(moveVec * speed * Time.deltaTime);          //beweegt controller
+        //controller.Move(moveVec * speed * Time.deltaTime);                      //beweegt controller
+
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
+        }
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - speed * Time.deltaTime);
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
+        }
 
         ShootingCooldown -= Time.deltaTime;
         ShootBullet();
