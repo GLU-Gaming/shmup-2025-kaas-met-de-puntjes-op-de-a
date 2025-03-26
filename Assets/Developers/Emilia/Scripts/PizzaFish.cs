@@ -4,7 +4,6 @@ using UnityEngine;
 public class PizzaFish : Enemy
 {
 
-    [SerializeField] public float health = 100;
     [SerializeField] public float damage = 50;
     private float damageCooldown; 
 
@@ -20,6 +19,7 @@ public class PizzaFish : Enemy
 
     void Update()
     {
+        Death();
         damageCooldown -= Time.deltaTime;
         DespawsnOnExit();
     }

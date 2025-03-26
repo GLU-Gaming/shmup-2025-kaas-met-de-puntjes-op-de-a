@@ -920,9 +920,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Bullet: {fileID: 5302454584731057893, guid: 48408252508d81547b37d5140586b9a4, type: 3}
-  BaseCooldown: 1
+  BaseCooldown: 0.5
   ShootingCooldown: 0
-  speed: 8
+  speed: 9
   Playerhealth: 500
 --- !u!143 &1718221024
 CharacterController:
