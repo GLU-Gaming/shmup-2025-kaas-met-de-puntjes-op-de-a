@@ -1,8 +1,5 @@
 using UnityEngine.SceneManagement;
-
 using UnityEngine;
-using UnityEngine.SceneManagement;
-
 public class Utilities : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
