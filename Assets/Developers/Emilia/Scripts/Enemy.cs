@@ -23,7 +23,7 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
         rightTop = Camera.main.ViewportToWorldPoint(new Vector3(1f, 1f, 20f));                                                  // haalt boven rechtse hoek van het speelveld  
         leftBottom = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 20f));                                                // haalt linker onderste hoek van het speelveld
         rb = GetComponent<Rigidbody>();
-        Vector3 transformdown = transform.right * -1f;
+        Vector3 transformdown = transform.right * 1f;
         rb.linearVelocity = transformdown * MoveSpeed;
     }
 
