@@ -1,3 +1,5 @@
+using UnityEngine.SceneManagement;
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,5 +20,15 @@ public class Utilities : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("main");
+    }
+
+    public void SettingsMenu()
+    {
+        SceneManager.LoadScene("settings");
+    }
+
+    public void ReturnToMain()
+    {
+        SceneManager.LoadScene("start");
     }
 }
