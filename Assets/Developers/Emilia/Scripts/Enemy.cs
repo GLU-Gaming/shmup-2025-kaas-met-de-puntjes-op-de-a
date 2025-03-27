@@ -11,6 +11,7 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
 
     private GameObject player;
     public PlayerController playerScript;
+    [SerializeField] public float health = 150;
 
     private void Start()
     {
@@ -38,14 +39,21 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
     {
         if (collission.gameObject.tag == "Bullet")                                                                              // Als het object de tag "Player" heeft
         {
-            Destroy(gameObject);                                                                                                // verwijder het object
+            health -= 50;                                                                                                // verwijder het object
         }
     }
 
-
-
-    void Update()
+    public virtual void Death()
     {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+        void Update()
+    {
+        Death();
         DespawsnOnExit();
     }
 }
