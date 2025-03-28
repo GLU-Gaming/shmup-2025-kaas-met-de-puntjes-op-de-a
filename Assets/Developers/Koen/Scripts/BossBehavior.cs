@@ -60,6 +60,6 @@ public class BossBehavior : MonoBehaviour
     private void SwipeArm()
     {
         Debug.Log("Swipe");
-        Instantiate(arm, armSpawn.transform.position, transform.rotation);
+        Instantiate(arm, armSpawn.transform.position, armSpawn.transform.rotation);
     }
 }

@@ -18,7 +18,7 @@ public class ArmBehavior : MonoBehaviour
         playerController = Player.GetComponent<PlayerController>();
 
         rb = gameObject.GetComponent<Rigidbody>();
-        RandomNumber = Random.Range(1, 4);
+        RandomNumber = Random.Range(1, 5);
         if (RandomNumber == 1)
         {
             
@@ -33,11 +33,13 @@ public class ArmBehavior : MonoBehaviour
         else if (RandomNumber == 3)
         {
             transform.position = new Vector3(leftBottom.x, 0, leftBottom.z);                                                    // zet de arm op de linker bovenste hoek van het scherm
-            transform.Rotate(0, -90, 0);                                                                                       // draait de arm 90 graden
+            transform.Rotate(90, 90, 90);                                                                                       // draait de arm 90 graden
             rb.AddForce(transform.forward * moveSpeed);                                                                         // beneden naar boven
         }
         else if (RandomNumber == 4)
         {
+            transform.position = new Vector3(leftBottom.x, 0, rightTop.z);                                                    // zet de arm op de linker bovenste hoek van het scherm
+            transform.Rotate(90, -90, 90);                                                                                       // draait de arm 90 graden
             rb.AddForce(transform.up * -moveSpeed);                                                                             // boven naar beneden
         }
         Debug.Log(RandomNumber);
