@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    public GameObject enemyPrefab;
+    public GameObject[] enemyPrefab;
     public Transform[] spawnPoints;
     public float spawnTime = 5f;
     public float spawnDelay = 3f;
@@ -20,7 +20,8 @@ public class EnemySpawner : MonoBehaviour
         if (enemyCount < spawnLimit)
         {
             int spawnPointIndex = Random.Range(0, spawnPoints.Length);
-            Instantiate(enemyPrefab, spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+            int enemyIndex = Random.Range(0, enemyPrefab.Length);
+            Instantiate(enemyPrefab[enemyIndex], spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
             enemyCount++;
         }
         else
