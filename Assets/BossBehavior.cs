@@ -7,6 +7,8 @@ public class BossBehavior : MonoBehaviour
     private float moveSpeed = 200f;                                     // hoe snel de boss beweegt
     [SerializeField] private GameObject projectile;                     // wat de boss schiet
     [SerializeField] private GameObject projectileSpawn;                // waar de spit projectiles spawnen
+    [SerializeField] private GameObject arm;                            // wat de boss swiped
+    [SerializeField] private GameObject armSpawn;                       // waar de arm spawned
     private float ChoiceTimer;                                          // hoelang tot de volgende keuze
     [SerializeField] private float BaseChoiceTimer = 2f;                // hoe lang de boss wacht met het kiezen van een actie
     private float swipeorspit;                                          // variabele waarmee de boss kiest tussen swipen of spitten
@@ -40,6 +42,7 @@ public class BossBehavior : MonoBehaviour
             if (swipeorspit >= 5)
             {
                 Debug.Log("Swipe");
+                SwipeArm();
             }
             else
             {
@@ -52,5 +55,11 @@ public class BossBehavior : MonoBehaviour
     private void SpitMeatball()
     {
         Instantiate (projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
+    }
+
+    private void SwipeArm()
+    {
+        Debug.Log("Swipe");
+        Instantiate(arm, armSpawn.transform.position, transform.rotation);
     }
 }
