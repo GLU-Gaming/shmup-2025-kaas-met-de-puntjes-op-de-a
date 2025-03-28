@@ -10,15 +10,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: b86d6c0c7c717d64aaa74cb9b555b733, type: 3}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b86d6c0c7c717d64aaa74cb9b555b733, type: 3}
       propertyPath: m_LocalScale.y
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b86d6c0c7c717d64aaa74cb9b555b733, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1
+      value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: b86d6c0c7c717d64aaa74cb9b555b733, type: 3}
       propertyPath: m_LocalPosition.x
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rightTop: {x: 0, y: 0, z: 0}
   leftBottom: {x: 0, y: 0, z: 0}
-  MoveSpeed: 2
+  MoveSpeed: 6
   playerScript: {fileID: 0}
   health: 150
   damage: 50
