@@ -21,7 +21,7 @@ public class Utilities : MonoBehaviour
 
     public void SettingsMenu()
     {
-        SceneManager.LoadScene("settings");
+        SceneManager.LoadScene("howtoplay");
     }
 
     public void ReturnToMain()
