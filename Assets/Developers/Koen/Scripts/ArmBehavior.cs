@@ -9,6 +9,7 @@ public class ArmBehavior : MonoBehaviour
     private Vector3 leftBottom;
     private Vector3 rightTop;
     private float RandomNumber;
+    private float TimeAlive = 3f;
 
     void Start()
     {
@@ -22,34 +23,43 @@ public class ArmBehavior : MonoBehaviour
         if (RandomNumber == 1)
         {
             
-            transform.position = new Vector3(rightTop.x, 0, leftBottom.z + 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
+            transform.position = new Vector3(rightTop.x + 4, 0, leftBottom.z + 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
             rb.AddForce(transform.forward * moveSpeed);                                                                         // beweegt de arm van rechts naar links
         }
         else if (RandomNumber == 2)
         {
-            transform.position = new Vector3(leftBottom.x, 0, rightTop.z - 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
+            transform.position = new Vector3(leftBottom.x - 4, 0, rightTop.z - 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
             rb.AddForce(transform.forward * -moveSpeed);                                                                        // links naar rechts
         }
         else if (RandomNumber == 3)
         {
-            transform.position = new Vector3(leftBottom.x, 0, leftBottom.z);                                                    // zet de arm op de linker bovenste hoek van het scherm
+            transform.position = new Vector3(leftBottom.x +2, 0, leftBottom.z - 3);                                                    // zet de arm op de linker bovenste hoek van het scherm
             transform.Rotate(90, 90, 90);                                                                                       // draait de arm 90 graden
             rb.AddForce(transform.forward * moveSpeed);                                                                         // beneden naar boven
         }
         else if (RandomNumber == 4)
         {
-            transform.position = new Vector3(leftBottom.x, 0, rightTop.z);                                                    // zet de arm op de linker bovenste hoek van het scherm
-            transform.Rotate(90, -90, 90);                                                                                       // draait de arm 90 graden
-            rb.AddForce(transform.up * -moveSpeed);                                                                             // boven naar beneden
+            transform.position = new Vector3(leftBottom.x +2, 0, rightTop.z + 3);                                                    // zet de arm op de linker bovenste hoek van het scherm
+            transform.Rotate(90, 90, 90);                                                                                       // draait de arm 90 graden
+            rb.AddForce(transform.forward * -moveSpeed);                                                                             // boven naar beneden
         }
         Debug.Log(RandomNumber);
     }
 
     void Update()
     {
-       //if(transform.position.x <= leftBottom.x - 3 || transform.position.x >= rightTop.x + 3)
-       // {
-       //     Destroy(gameObject);
-       // }
+        TimeAlive -= Time.deltaTime;
+        if (TimeAlive <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Player"))
+        {
+            playerController.Playerhealth -= 100;
+        }
     }
 }

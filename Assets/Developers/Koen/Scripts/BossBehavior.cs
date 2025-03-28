@@ -13,6 +13,8 @@ public class BossBehavior : MonoBehaviour
     [SerializeField] private float BaseChoiceTimer = 2f;                // hoe lang de boss wacht met het kiezen van een actie
     private float swipeorspit;                                          // variabele waarmee de boss kiest tussen swipen of spitten
 
+    [SerializeField] public float bossHealth = 2000f;                                   // hoeveel health de boss heeft
+
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
@@ -20,9 +22,10 @@ public class BossBehavior : MonoBehaviour
         ChoiceTimer = BaseChoiceTimer;
     }
 
-    // Update is called once per frame
+    
     void Update()
     {
+        //movement
         if (transform.position.z >= 8)
         {
             rb.linearVelocity = Vector3.zero;
@@ -33,6 +36,8 @@ public class BossBehavior : MonoBehaviour
             rb.linearVelocity = Vector3.zero;
             rb.AddForce(transform.up * moveSpeed * 1);
         }
+
+        //attacks
         ChoiceTimer -= Time.deltaTime;
         if (ChoiceTimer <= 0)
         {
@@ -59,7 +64,15 @@ public class BossBehavior : MonoBehaviour
 
     private void SwipeArm()
     {
-        Debug.Log("Swipe");
         Instantiate(arm, armSpawn.transform.position, armSpawn.transform.rotation);
     }
+
+    void OnTriggerEnter(Collider collission)
+    {
+        if (collission.gameObject.tag == "Bullet")                                                                              // Als het object de tag "Bullet" heeft
+        {
+            bossHealth -= 50;
+        }
+    }
+
 }

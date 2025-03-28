@@ -39,7 +39,7 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
     {
         if (collission.gameObject.tag == "Bullet")                                                                              // Als het object de tag "Player" heeft
         {
-            health -= 50;                                                                                                // verwijder het object
+            health -= 50;                                                                                                       // krijgt damage
         }
     }
 

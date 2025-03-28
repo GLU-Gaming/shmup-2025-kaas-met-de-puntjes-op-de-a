@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
     // Instantiate bullet prefab
     void ShootBullet()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && ShootingCooldown <= 0)
+        if (Input.GetKey(KeyCode.Space) && ShootingCooldown <= 0)
         {
             Instantiate(Bullet, transform.position, transform.rotation);
             ShootingCooldown = 0;

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - PizzaFish
   - Bullet
+  - Boss
   layers:
   - Default
   - TransparentFX
@@ -15,8 +16,8 @@ TagManager:
   - UI
   - Player
   - Bullet/Attacks
-  - 
-  - 
+  - BossBullet
+  - Boss
   - 
   - 
   - 
