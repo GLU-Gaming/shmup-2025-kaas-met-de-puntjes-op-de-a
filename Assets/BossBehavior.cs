@@ -1,0 +1,56 @@
+using Unity.Multiplayer.Center.Common;
+using UnityEngine;
+
+public class BossBehavior : MonoBehaviour
+{   
+    private Rigidbody rb;
+    private float moveSpeed = 200f;                                     // hoe snel de boss beweegt
+    [SerializeField] private GameObject projectile;                     // wat de boss schiet
+    [SerializeField] private GameObject projectileSpawn;                // waar de spit projectiles spawnen
+    private float ChoiceTimer;                                          // hoelang tot de volgende keuze
+    [SerializeField] private float BaseChoiceTimer = 2f;                // hoe lang de boss wacht met het kiezen van een actie
+    private float swipeorspit;                                          // variabele waarmee de boss kiest tussen swipen of spitten
+
+    void Start()
+    {
+        rb = gameObject.GetComponent<Rigidbody>();
+        rb.AddForce(transform.up * moveSpeed * 1);
+        ChoiceTimer = BaseChoiceTimer;
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        if (transform.position.z >= 8)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.AddForce(transform.up * moveSpeed * - 1);
+        }
+        else if (transform.position.z <= -8)
+        {
+            rb.linearVelocity = Vector3.zero;
+            rb.AddForce(transform.up * moveSpeed * 1);
+        }
+        ChoiceTimer -= Time.deltaTime;
+        if (ChoiceTimer <= 0)
+        {
+            ChoiceTimer = 0f;
+            ChoiceTimer += BaseChoiceTimer;
+            swipeorspit = Random.Range(0, 10);
+            if (swipeorspit >= 5)
+            {
+                Debug.Log("Swipe");
+            }
+            else
+            {
+                Debug.Log("Spit");
+                SpitMeatball();
+            }
+        }
+    }
+
+    private void SpitMeatball()
+    {
+        Instantiate (projectile, projectileSpawn.transform.position, projectileSpawn.transform.rotation);
+    }
+}
