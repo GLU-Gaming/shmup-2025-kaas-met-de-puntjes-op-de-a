@@ -733,7 +733,7 @@ MonoBehaviour:
   - {fileID: 1415103515}
   spawnTime: 5
   spawnDelay: 3
-  spawnLimit: 10
+  spawnLimit: 100
 --- !u!4 &1546192226
 Transform:
   m_ObjectHideFlags: 0
