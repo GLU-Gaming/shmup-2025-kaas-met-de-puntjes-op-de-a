@@ -4,8 +4,8 @@ using UnityEngine.UI;
 
 public class GameBoss : MonoBehaviour
 {
-    //[SerializeField] private Image healthImage;
-    //[SerializeField] private Image bossHealthImage;
+    [SerializeField] private Image healthImage;
+    [SerializeField] private Image bossHealthImage;
     private GameObject player;
     private PlayerController playerScript;
     private GameObject Boss;
