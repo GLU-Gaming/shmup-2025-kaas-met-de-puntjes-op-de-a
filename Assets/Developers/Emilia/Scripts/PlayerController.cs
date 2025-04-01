@@ -17,14 +17,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        //float horizontal = Input.GetAxis("Horizontal");                         // get horizontal axis
-        //float vertical = Input.GetAxis("Vertical");                             // get vertical axis
-
-        //Vector3 moveVec = new Vector3(horizontal, 0, vertical);                 //create new Vector3
-        //moveVec = moveVec.normalized;
-
-        //controller.Move(moveVec * speed * Time.deltaTime);                      //beweegt controller
-
         if (Input.GetKey(KeyCode.W))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed * Time.deltaTime);
