@@ -19,7 +19,7 @@ public class PizzaFish : Enemy
     {
         if (shootTimer <= 0)
         {
-            Instantiate(pepperoni, transform.position, transform.rotation);
+            Instantiate(pepperoni, transform.position, pepperoni.transform.rotation);
             shootTimer = shootInterval;
         }
     }
