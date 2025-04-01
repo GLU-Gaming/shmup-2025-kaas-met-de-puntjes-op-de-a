@@ -105,6 +105,9 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   health: 150
   damage: 50
+  pepperoni: {fileID: 4868335550473804679, guid: 42690d768c8bed6409f54cd10656979b, type: 3}
+  timecounter: 0
+  basetime: 0
 --- !u!54 &1415142065449238732
 Rigidbody:
   m_ObjectHideFlags: 0

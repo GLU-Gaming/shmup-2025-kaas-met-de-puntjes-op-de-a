@@ -5,8 +5,24 @@ public class PizzaFish : Enemy
 {
 
     [SerializeField] public float damage = 50;
-    private float damageCooldown; 
+    [SerializeField] private GameObject pepperoni;
+    private float damageCooldown;
 
+    [SerializeField] public float shootInterval = 3f;
+    [SerializeField] private float shootTimer;
+
+    private void Start()
+    {
+        shootTimer = shootInterval;
+    }
+    void ShootBullet()
+    {
+        if (shootTimer <= 0)
+        {
+            Instantiate(pepperoni, transform.position, transform.rotation);
+            shootTimer = shootInterval;
+        }
+    }
 
     public override void DespawsnOnExit()
     {
@@ -22,6 +38,11 @@ public class PizzaFish : Enemy
         Death();
         damageCooldown -= Time.deltaTime;
         DespawsnOnExit();
+
+        shootTimer -= Time.deltaTime;
+        ShootBullet();
+
+
     }
 
     public override void OnTriggerEnter(Collider collision)
