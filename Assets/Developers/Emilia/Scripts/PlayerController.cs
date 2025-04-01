@@ -3,6 +3,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] private GameObject Bullet;                     // Bullet prefab
+    [SerializeField] private GameObject bulletSpawn;
     [SerializeField] private float BaseCooldown = 1f;                 // base cooldown for shooting
     [SerializeField] private float ShootingCooldown;         // current cooldown for shooting
     public float speed = 6.0f;
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) && ShootingCooldown <= 0)
         {
-            Instantiate(Bullet, transform.position, transform.rotation);
+            Instantiate(Bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
             ShootingCooldown = 0;
             ShootingCooldown += BaseCooldown;
         }
