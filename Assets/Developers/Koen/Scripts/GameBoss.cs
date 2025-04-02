@@ -23,7 +23,7 @@ public class GameBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //healthImage.fillAmount = playerScript.Playerhealth / 500;
+        healthImage.fillAmount = playerScript.Playerhealth / 500;
         //bossHealthImage.fillAmount = BossScript.bossHealth / 2000;
         ScoreText.text = "Score: <br>" + CurrentScore;
 

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2745040678768700813}
   - component: {fileID: 7945839405410318097}
   - component: {fileID: -5715625393552760868}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PizzaFish Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -129,4 +129,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TimeAlive: 2
   rb: {fileID: 0}
-  MoveSpeed: 100
+  MoveSpeed: 15

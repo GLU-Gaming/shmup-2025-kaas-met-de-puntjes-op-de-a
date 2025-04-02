@@ -41,7 +41,7 @@ public class PizzaFish : Enemy
 
         shootTimer -= Time.deltaTime;
         ShootBullet();
-
+        Debug.Log(playerScript.Playerhealth);
 
     }
 
@@ -49,7 +49,7 @@ public class PizzaFish : Enemy
     {
         if (collision.gameObject.tag == "Player" && damageCooldown <= 0)                                                                                // Als het object de tag "Player" heeft
         {
-            playerScript.Playerhealth -= damage;                                                                                 // doe damage
+            playerScript.Playerhealth -= damage;                                                                                                        // doe damage
             damageCooldown = 0;
             damageCooldown += 2f;
         }
