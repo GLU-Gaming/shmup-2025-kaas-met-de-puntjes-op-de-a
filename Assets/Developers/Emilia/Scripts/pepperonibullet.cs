@@ -6,6 +6,7 @@ public class pepperonibullet : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float MoveSpeed = 1f;
     
+    
     private void Start()
     {
         rb = GetComponent<Rigidbody>();

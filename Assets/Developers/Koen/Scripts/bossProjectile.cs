@@ -26,7 +26,7 @@ public class bossProjectile : MonoBehaviour
 
     public virtual void DespawsnOnExit()
     {
-        if (transform.position.x <= leftBottom.x - 3)                                                                           // Als de transform van het object aan de linkerkant het scherm verlaat
+        if (rb.position.x <= leftBottom.x - 3)                                                                                  // Als de transform van het object aan de linkerkant het scherm verlaat
         {
             Destroy(gameObject);                                                                                                // verwijder het object
         }

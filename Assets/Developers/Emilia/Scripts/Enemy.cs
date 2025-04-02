@@ -12,12 +12,10 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
     private GameObject player;
     public PlayerController playerScript;
     [SerializeField] public float health = 150;
+    protected GameObject Gamemanager;
+    protected GameBoss GameBoss;
 
-    private void Start()
-    {
-        player = GameObject.FindWithTag("Player");
-        playerScript = player.GetComponent<PlayerController>();
-    }
+
     void Awake()
     {
         rightTop = Camera.main.ViewportToWorldPoint(new Vector3(1f, 1f, 20f));                                                  // haalt boven rechtse hoek van het speelveld  
@@ -25,6 +23,10 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
         rb = GetComponent<Rigidbody>();
         Vector3 transformdown = transform.right * 1f;
         rb.linearVelocity = transformdown * MoveSpeed;
+        player = GameObject.FindWithTag("Player");
+        playerScript = player.GetComponent<PlayerController>();
+        Gamemanager = GameObject.FindWithTag("GameManager");
+        GameBoss = Gamemanager.GetComponent<GameBoss>();
     }
 
     public virtual void DespawsnOnExit()
@@ -53,7 +55,10 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
 
         void Update()
     {
-        Death();
-        DespawsnOnExit();
+        if (GameBoss.gameEnd != true)
+        {
+            Death();
+            DespawsnOnExit();
+        }
     }
 }
