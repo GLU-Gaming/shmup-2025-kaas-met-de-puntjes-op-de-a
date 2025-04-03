@@ -7,9 +7,9 @@ public class PizzaFish : Enemy
     [SerializeField] public float damage = 50;
     [SerializeField] private GameObject pepperoni;
     private float damageCooldown;
-
     [SerializeField] public float shootInterval = 3f;
     [SerializeField] private float shootTimer;
+    
 
     private void Start()
     {
@@ -26,30 +26,29 @@ public class PizzaFish : Enemy
 
     public override void DespawsnOnExit()
     {
-        if (transform.position.x <= leftBottom.x - 3)                                                                        // Als de transform van het object aan de linkerkant het scherm verlaat
-        {
-            base.DespawsnOnExit();
-            playerScript.Playerhealth -= damage;
-        }
+        base.DespawsnOnExit();
+        playerScript.Playerhealth -= damage;   
     }
 
     void Update()
     {
-        Death();
-        damageCooldown -= Time.deltaTime;
-        DespawsnOnExit();
+        if (GameBoss.gameEnd != true)
+        {
+            Death();
+            damageCooldown -= Time.deltaTime;
+            DespawsnOnExit();
 
-        shootTimer -= Time.deltaTime;
-        ShootBullet();
-
-
+            shootTimer -= Time.deltaTime;
+            ShootBullet();
+            Debug.Log(playerScript.Playerhealth);
+        }
     }
 
     public override void OnTriggerEnter(Collider collision)
     {
         if (collision.gameObject.tag == "Player" && damageCooldown <= 0)                                                                                // Als het object de tag "Player" heeft
         {
-            playerScript.Playerhealth -= damage;                                                                                 // doe damage
+            playerScript.Playerhealth -= damage;                                                                                                        // doe damage
             damageCooldown = 0;
             damageCooldown += 2f;
         }

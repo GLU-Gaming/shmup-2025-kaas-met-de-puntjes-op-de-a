@@ -23,23 +23,23 @@ public class ArmBehavior : MonoBehaviour
         if (RandomNumber == 1)
         {
             
-            transform.position = new Vector3(rightTop.x + 4, 0, leftBottom.z + 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
+            rb.position = new Vector3(rightTop.x + 4, 0, leftBottom.z + 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
             rb.AddForce(transform.forward * moveSpeed);                                                                         // beweegt de arm van rechts naar links
         }
         else if (RandomNumber == 2)
         {
-            transform.position = new Vector3(leftBottom.x - 4, 0, rightTop.z - 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
+            rb.position = new Vector3(leftBottom.x - 4, 0, rightTop.z - 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
             rb.AddForce(transform.forward * -moveSpeed);                                                                        // links naar rechts
         }
         else if (RandomNumber == 3)
         {
-            transform.position = new Vector3(leftBottom.x +2, 0, leftBottom.z - 3);                                                    // zet de arm op de linker bovenste hoek van het scherm
+            rb.position = new Vector3(leftBottom.x +2, 0, leftBottom.z - 3);                                                    // zet de arm op de linker bovenste hoek van het scherm
             transform.Rotate(90, 90, 90);                                                                                       // draait de arm 90 graden
             rb.AddForce(transform.forward * moveSpeed);                                                                         // beneden naar boven
         }
         else if (RandomNumber == 4)
         {
-            transform.position = new Vector3(leftBottom.x +2, 0, rightTop.z + 3);                                                    // zet de arm op de linker bovenste hoek van het scherm
+            rb.position = new Vector3(leftBottom.x +2, 0, rightTop.z + 3);                                                    // zet de arm op de linker bovenste hoek van het scherm
             transform.Rotate(90, 90, 90);                                                                                       // draait de arm 90 graden
             rb.AddForce(transform.forward * -moveSpeed);                                                                             // boven naar beneden
         }

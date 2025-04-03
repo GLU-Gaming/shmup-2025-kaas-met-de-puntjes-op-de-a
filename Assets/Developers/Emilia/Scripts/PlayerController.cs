@@ -2,51 +2,52 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameObject Bullet;                     // Bullet prefab
-    [SerializeField] private float BaseCooldown = 1f;                 // base cooldown for shooting
-    [SerializeField] private float ShootingCooldown;         // current cooldown for shooting
+    [SerializeField] private GameObject Bullet;                         // Bullet prefab
+    [SerializeField] private GameObject bulletSpawn;
+    [SerializeField] private float BaseCooldown = 1f;                   // base cooldown for shooting
+    [SerializeField] private float ShootingCooldown;                    // current cooldown for shooting
     public float speed = 6.0f;
     private CharacterController controller;
-
+    private Rigidbody rb;
     [SerializeField] public float Playerhealth = 500;
+    private GameObject Gamemanager;
+    private GameBoss GameBoss;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        rb = GetComponent<Rigidbody>();
+        Gamemanager = GameObject.FindWithTag("GameManager");
+        GameBoss = Gamemanager.GetComponent<GameBoss>();
     }
 
     void Update()
     {
-        //float horizontal = Input.GetAxis("Horizontal");                         // get horizontal axis
-        //float vertical = Input.GetAxis("Vertical");                             // get vertical axis
-
-        //Vector3 moveVec = new Vector3(horizontal, 0, vertical);                 //create new Vector3
-        //moveVec = moveVec.normalized;
-
-        //controller.Move(moveVec * speed * Time.deltaTime);                      //beweegt controller
-
-        if (Input.GetKey(KeyCode.W))
+        if (GameBoss.gameEnd != true)
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed * Time.deltaTime);
-        }
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.position = new Vector3(rb.position.x, rb.position.y, rb.position.z + speed * Time.deltaTime);
+            }
 
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position = new Vector3(transform.position.x + speed * Time.deltaTime, transform.position.y, transform.position.z);
-        }
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.position = new Vector3(rb.position.x + speed * Time.deltaTime, rb.position.y, rb.position.z);
+            }
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - speed * Time.deltaTime);
-        }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rb.position = new Vector3(rb.position.x, rb.position.y, rb.position.z - speed * Time.deltaTime);
+            }
 
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position = new Vector3(transform.position.x - speed * Time.deltaTime, transform.position.y, transform.position.z);
-        }
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.position = new Vector3(rb.position.x - speed * Time.deltaTime, rb.position.y, rb.position.z);
+            }
 
-        ShootingCooldown -= Time.deltaTime;
-        ShootBullet();
+            ShootingCooldown -= Time.deltaTime;
+            ShootBullet();
+        }
     }
 
     // Instantiate bullet prefab
@@ -54,7 +55,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space) && ShootingCooldown <= 0)
         {
-            Instantiate(Bullet, transform.position, transform.rotation);
+            Instantiate(Bullet, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
             ShootingCooldown = 0;
             ShootingCooldown += BaseCooldown;
         }

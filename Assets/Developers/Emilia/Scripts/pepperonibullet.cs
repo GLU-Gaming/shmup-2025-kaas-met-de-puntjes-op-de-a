@@ -1,11 +1,11 @@
 using UnityEngine;
-using static UnityEditor.Searcher.SearcherWindow.Alignment;
 
 public class pepperonibullet : MonoBehaviour
 {
     [SerializeField] private float TimeAlive = 2f;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float MoveSpeed = 1f;
+    
     
     private void Start()
     {

@@ -7,6 +7,8 @@ TagManager:
   - PizzaFish
   - Bullet
   - Boss
+  - DeathPopup
+  - GameManager
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Bullet/Attacks
   - BossBullet
   - Boss
-  - 
+  - Enemies
   - 
   - 
   - 

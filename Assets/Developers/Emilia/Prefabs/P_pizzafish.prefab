@@ -68,6 +68,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: P_pizzafish
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b86d6c0c7c717d64aaa74cb9b555b733, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -106,8 +110,8 @@ MonoBehaviour:
   health: 150
   damage: 50
   pepperoni: {fileID: 4868335550473804679, guid: 42690d768c8bed6409f54cd10656979b, type: 3}
-  timecounter: 0
-  basetime: 0
+  shootInterval: 3
+  shootTimer: 0
 --- !u!54 &1415142065449238732
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -148,7 +152,7 @@ MeshCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1792
   m_LayerOverridePriority: 0
   m_IsTrigger: 1
   m_ProvidesContacts: 0
