@@ -10,7 +10,7 @@ public class GameBoss : MonoBehaviour
     private PlayerController playerScript;
     private GameObject Boss;
     private BossBehavior BossScript;
-    private float CurrentScore = 100;
+    public float CurrentScore = 100;
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private GameObject DeathPopup;
     public bool gameEnd;
