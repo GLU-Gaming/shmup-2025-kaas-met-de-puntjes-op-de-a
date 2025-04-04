@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 84e507a0bb223bb4d97f721e5afd20c5, type: 2}
     - target: {fileID: 919132149155446097, guid: ad90d3f27f784a2448b729aa8dc55d23, type: 3}
       propertyPath: m_Name
-      value: OctobusBoss
+      value: P_octoboss
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
