@@ -109,7 +109,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   health: 150
   damage: 0.1
-  pepperoni: {fileID: 4868335550473804679, guid: 42690d768c8bed6409f54cd10656979b, type: 3}
+  pepperoni: {fileID: 5252560513227540379, guid: 3ed1d1280c9226a4f9c555de029d8b3b, type: 3}
   shootInterval: 3
   shootTimer: 0
 --- !u!54 &1415142065449238732

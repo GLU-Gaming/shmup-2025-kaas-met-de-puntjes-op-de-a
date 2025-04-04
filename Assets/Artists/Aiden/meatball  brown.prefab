@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6993692980106827316}
   - component: {fileID: 4764328867747525199}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: meatball  brown
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
