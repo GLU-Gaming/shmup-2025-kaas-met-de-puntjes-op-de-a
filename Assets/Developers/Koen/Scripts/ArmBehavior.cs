@@ -19,29 +19,32 @@ public class ArmBehavior : MonoBehaviour
         playerController = Player.GetComponent<PlayerController>();
 
         rb = gameObject.GetComponent<Rigidbody>();
-        RandomNumber = Random.Range(1, 5);
+        RandomNumber = Random.Range(1,5);
         if (RandomNumber == 1)
         {
             
-            rb.position = new Vector3(rightTop.x + 4, 0, leftBottom.z + 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
-            rb.AddForce(transform.forward * moveSpeed);                                                                         // beweegt de arm van rechts naar links
+            transform.position = new Vector3(rightTop.x + 4, 0, leftBottom.z + 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
+            rb.AddForce(Vector3.right * -moveSpeed);                                                                         // beweegt de arm van rechts naar links
+            transform.rotation = Quaternion.Euler(0, 0, -90);
+
         }
         else if (RandomNumber == 2)
         {
-            rb.position = new Vector3(leftBottom.x - 4, 0, rightTop.z - 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
-            rb.AddForce(transform.forward * -moveSpeed);                                                                        // links naar rechts
+            transform.position = new Vector3(rightTop.x + 2, 0, rightTop.z - 2);                                                  // zet de arm op de linker bovenste hoek van het scherm
+            rb.AddForce(Vector3.right * -moveSpeed);                                                                        // links naar rechts
+            transform.rotation = Quaternion.Euler(0, 180, -90);
         }
         else if (RandomNumber == 3)
         {
-            rb.position = new Vector3(leftBottom.x +2, 0, leftBottom.z - 3);                                                    // zet de arm op de linker bovenste hoek van het scherm
-            transform.Rotate(90, 90, 90);                                                                                       // draait de arm 90 graden
-            rb.AddForce(transform.forward * moveSpeed);                                                                         // beneden naar boven
+            transform.position = new Vector3(leftBottom.x +2, 0, leftBottom.z - 3);                                                    // zet de arm op de linker bovenste hoek van het scherm
+            transform.rotation = Quaternion.Euler(0, 90, -90);                                                                                       // draait de arm 90 graden
+            rb.AddForce(Vector3.forward * moveSpeed);                                                                         // beneden naar boven
         }
         else if (RandomNumber == 4)
         {
-            rb.position = new Vector3(leftBottom.x +2, 0, rightTop.z + 3);                                                    // zet de arm op de linker bovenste hoek van het scherm
-            transform.Rotate(90, 90, 90);                                                                                       // draait de arm 90 graden
-            rb.AddForce(transform.forward * -moveSpeed);                                                                             // boven naar beneden
+            transform.position = new Vector3(leftBottom.x +2, 0, rightTop.z + 3);                                                    // zet de arm op de linker bovenste hoek van het scherm
+            transform.rotation = Quaternion.Euler(0, 90, -90);                                                                                       // draait de arm 90 graden
+            rb.AddForce(Vector3.forward * -moveSpeed);                                                                             // boven naar beneden
         }
         Debug.Log(RandomNumber);
     }

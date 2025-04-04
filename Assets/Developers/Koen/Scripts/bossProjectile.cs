@@ -15,7 +15,7 @@ public class bossProjectile : MonoBehaviour
         playerController = Player.GetComponent<PlayerController>();
 
         rb = gameObject.GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * moveSpeed);
+        rb.AddForce(Vector3.right * - moveSpeed);
     }
 
     // Update is called once per frame
