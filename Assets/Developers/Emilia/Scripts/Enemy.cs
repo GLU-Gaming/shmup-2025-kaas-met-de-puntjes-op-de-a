@@ -13,11 +13,16 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
     public PlayerController playerScript;
     [SerializeField] public float health = 150;
     protected GameObject Gamemanager;
+    EnemySpawner spawner;
     protected GameBoss GameBoss;
+
 
 
     void Awake()
     {
+
+        spawner = GameObject.FindFirstObjectByType<EnemySpawner>();
+
         rightTop = Camera.main.ViewportToWorldPoint(new Vector3(1f, 1f, 20f));                                                  // haalt boven rechtse hoek van het speelveld  
         leftBottom = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 20f));                                                // haalt linker onderste hoek van het speelveld
         rb = GetComponent<Rigidbody>();
@@ -37,8 +42,18 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
         }
     }
 
+    public virtual void FakeTriggerEnter(Collider collission)
+    {
+
+        if (collission.gameObject.tag == "Bullet")                                                                              // Als het object de tag "Player" heeft
+        {
+            health -= 50;                                                                                                       // krijgt damage
+        }
+    }
+
     public virtual void OnTriggerEnter(Collider collission)
     {
+        print(" hit base");
         if (collission.gameObject.tag == "Bullet")                                                                              // Als het object de tag "Player" heeft
         {
             health -= 50;                                                                                                       // krijgt damage
@@ -53,12 +68,25 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
         }
     }
 
-        void Update()
+        protected virtual void Update()
     {
         if (GameBoss.gameEnd != true)
         {
             Death();
             DespawsnOnExit();
+        }
+
+        if (health <= 0) 
+        {
+            Destroy(gameObject);
+            spawner.enemyCount--;
+        }
+
+        //als enemy aan de linkerkant van het scherm is doodmaken zodat de waves correct blijven werken
+        if(transform.position.x <= -22.5f)
+        {
+            spawner.enemyCount--;
+            Destroy(gameObject);
         }
     }
 }

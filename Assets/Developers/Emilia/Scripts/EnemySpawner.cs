@@ -1,6 +1,6 @@
-using System;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Collections;
 using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
@@ -12,8 +12,10 @@ public class EnemySpawner : MonoBehaviour
     public int spawnLimit = 10;
     private GameObject Gamemanager;
     private GameBoss GameBoss;
-    private int enemyCount = 0;
+    public int enemyCount = 0;
     public int waveCount = 0;
+
+    bool SpawnDebounce = false;
 
     [System.Serializable]
     public class Waves {
@@ -24,7 +26,18 @@ public class EnemySpawner : MonoBehaviour
     {
         Gamemanager = GameObject.FindWithTag("GameManager");
         GameBoss = Gamemanager.GetComponent<GameBoss>();
-        InvokeRepeating("AddEnemy", spawnDelay, spawnTime);
+        SpawnDebounce=true;
+        StartCoroutine(SpawnBarrage(2f, 2f));
+    }
+
+    private void FixedUpdate()
+    {
+        if (!SpawnDebounce && enemyCount <= 0)
+        {
+            SpawnDebounce=true;
+            waveCount++;
+            StartCoroutine(SpawnBarrage(2f));
+        }
     }
 
     void AddEnemy()
@@ -45,5 +58,19 @@ public class EnemySpawner : MonoBehaviour
         {
             CancelInvoke("AddEnemy");
         }
+    }
+
+    IEnumerator SpawnBarrage(float Delay, float DelayBeforeSpawn = 0f)
+    {
+        print("Spawning Wave: " + waveCount);
+        yield return new WaitForSeconds(DelayBeforeSpawn);
+        for(int i = 0; i < waves[waveCount].Enemies.Length; i++)
+        {
+            int spawnPointIndex = Random.Range(0, spawnPoints.Length);
+            Instantiate(waves[waveCount].Enemies[i], spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
+            enemyCount++;
+            yield return new WaitForSeconds(Delay);
+        }
+        SpawnDebounce = false;
     }
 }

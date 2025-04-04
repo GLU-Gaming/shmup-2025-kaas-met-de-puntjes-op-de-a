@@ -680,8 +680,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 248e22f3b5fe9c245b8d06cbf3632e62, type: 2}
-  m_sharedMaterial: {fileID: 25249843211898268, guid: 248e22f3b5fe9c245b8d06cbf3632e62, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2302,10 +2302,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c607a2f45410e945b3f0dbebd346bb1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab:
-  - {fileID: 3800931382548034710, guid: 0cfcd7567d37bae41a0c8e221d8451b3, type: 3}
-  - {fileID: 0}
-  - {fileID: 0}
+  waves:
+  - Enemies:
+    - {fileID: 1238196886955473241, guid: f8fc4140b7b0fb7419d0e0aec088a1e5, type: 3}
+    - {fileID: 1238196886955473241, guid: f8fc4140b7b0fb7419d0e0aec088a1e5, type: 3}
+  - Enemies:
+    - {fileID: 1238196886955473241, guid: f8fc4140b7b0fb7419d0e0aec088a1e5, type: 3}
+    - {fileID: 1238196886955473241, guid: f8fc4140b7b0fb7419d0e0aec088a1e5, type: 3}
+    - {fileID: 3800931382548034710, guid: 0cfcd7567d37bae41a0c8e221d8451b3, type: 3}
+    - {fileID: 3800931382548034710, guid: 0cfcd7567d37bae41a0c8e221d8451b3, type: 3}
+  - Enemies:
+    - {fileID: 1238196886955473241, guid: f8fc4140b7b0fb7419d0e0aec088a1e5, type: 3}
+    - {fileID: 1238196886955473241, guid: f8fc4140b7b0fb7419d0e0aec088a1e5, type: 3}
+    - {fileID: 6789217126609386354, guid: 4b83688c501b11c46b1d8f083a535e92, type: 3}
+    - {fileID: 6789217126609386354, guid: 4b83688c501b11c46b1d8f083a535e92, type: 3}
   spawnPoints:
   - {fileID: 1523140985}
   - {fileID: 1147996037}
@@ -2313,6 +2323,8 @@ MonoBehaviour:
   spawnTime: 5
   spawnDelay: 3
   spawnLimit: 100
+  enemyCount: 0
+  waveCount: 0
 --- !u!4 &1546192226
 Transform:
   m_ObjectHideFlags: 0
@@ -2615,6 +2627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthImage: {fileID: 2076766808}
   bossHealthImage: {fileID: 455308001}
+  CurrentScore: 100
   ScoreText: {fileID: 464609053}
   DeathPopup: {fileID: 987169800}
   gameEnd: 0

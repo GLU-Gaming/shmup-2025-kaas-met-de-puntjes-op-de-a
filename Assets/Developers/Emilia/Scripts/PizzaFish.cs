@@ -30,8 +30,9 @@ public class PizzaFish : Enemy
         playerScript.Playerhealth -= damage;   
     }
 
-    void Update()
+    protected override void Update()
     {
+        
         if (GameBoss.gameEnd != true)
         {
             Death();
@@ -40,8 +41,9 @@ public class PizzaFish : Enemy
 
             shootTimer -= Time.deltaTime;
             ShootBullet();
-            Debug.Log(playerScript.Playerhealth);
+            //Debug.Log(playerScript.Playerhealth);
         }
+        base.Update();
     }
 
     public override void OnTriggerEnter(Collider collision)
