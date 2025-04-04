@@ -694,6 +694,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthImage: {fileID: 299967257}
   bossHealthImage: {fileID: 99669690}
+  CurrentScore: 100
   ScoreText: {fileID: 0}
   DeathPopup: {fileID: 0}
   gameEnd: 0
