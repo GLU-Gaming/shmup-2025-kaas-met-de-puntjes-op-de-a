@@ -27,4 +27,10 @@ public class Utilities : MonoBehaviour
         GameBoss.gameEnd = false;
         Time.timeScale = 1;
     }
+
+    public void QuitGame()
+    {
+        Application.Quit();
+        Debug.Log("Quit");
+    }
 }
