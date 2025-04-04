@@ -43,6 +43,8 @@ public class PizzaFish : Enemy
             ShootBullet();
             //Debug.Log(playerScript.Playerhealth);
         }
+
+        //if wave 4 is done start boss wave
         base.Update();
     }
 
