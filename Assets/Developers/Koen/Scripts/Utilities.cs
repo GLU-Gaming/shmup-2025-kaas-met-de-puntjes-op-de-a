@@ -23,9 +23,9 @@ public class Utilities : MonoBehaviour
 
     public void ReturnToMain()
     {
-        SceneManager.LoadScene("start");
         GameBoss.gameEnd = false;
-        Time.timeScale = 1;
+        //Time.timeScale = 1;
+        SceneManager.LoadScene("start");
     }
 
     public void QuitGame()

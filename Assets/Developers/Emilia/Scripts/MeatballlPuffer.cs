@@ -5,7 +5,12 @@ public class MeatballlPuffer : Enemy
     [SerializeField] public float damage = 50;
     private float damageCooldown;
 
-
+    protected void Start()
+    {
+        pointWorth = 150;
+        moveSpeed = 500f;
+        rb.AddForce(transform.right * moveSpeed);
+    }
     public override void DespawsnOnExit()
     {
         if (transform.position.x <= leftBottom.x - 3)                                                                        // Als de transform van het object aan de linkerkant het scherm verlaat
@@ -17,8 +22,9 @@ public class MeatballlPuffer : Enemy
         }
     }
 
-    void Update()
+    protected override void Update()
     {
+        base.Update();
         Death();
         damageCooldown -= Time.deltaTime;
         DespawsnOnExit();

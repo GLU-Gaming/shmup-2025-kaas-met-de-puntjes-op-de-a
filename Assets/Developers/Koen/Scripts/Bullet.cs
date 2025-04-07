@@ -9,8 +9,7 @@ public class Bullet : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        Vector3 transformdown = transform.up * -1.0f;
-        rb.linearVelocity = transformdown * MoveSpeed;
+        rb.AddForce(Vector3.right * MoveSpeed);
     }
 
     // Update is called once per frame

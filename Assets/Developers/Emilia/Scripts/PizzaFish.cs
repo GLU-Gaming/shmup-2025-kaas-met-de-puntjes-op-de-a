@@ -9,11 +9,14 @@ public class PizzaFish : Enemy
     private float damageCooldown;
     [SerializeField] public float shootInterval = 3f;
     [SerializeField] private float shootTimer;
-    
 
     private void Start()
     {
         shootTimer = shootInterval;
+        pointWorth = 100;
+        moveSpeed = 200f;
+        rb.AddForce(transform.right * moveSpeed);
+
     }
     void ShootBullet()
     {
@@ -27,7 +30,10 @@ public class PizzaFish : Enemy
     public override void DespawsnOnExit()
     {
         base.DespawsnOnExit();
-        playerScript.Playerhealth -= damage;   
+        if (transform.position.x <= leftBottom.x - 3)                                                                           // Als de transform van het object aan de linkerkant het scherm verlaat
+        {
+            playerScript.Playerhealth -= damage;
+        }
     }
 
     protected override void Update()

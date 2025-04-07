@@ -6,8 +6,8 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
 {
     [SerializeField] protected Vector3 rightTop;                                                                                  // Een lege Vector3 die later de waarde krijgt van de rechter-boven hoek van het scherm
     [SerializeField] public Vector3 leftBottom;                                                                                // Een lege Vector3 die later de waarde krijgt van de links-onder hoek van het scherm
-    private Rigidbody rb;
-    [SerializeField] private float MoveSpeed = 2f;
+    protected Rigidbody rb;
+    [SerializeField] private float MoveSpeed;
 
     private GameObject player;
     public PlayerController playerScript;
@@ -15,6 +15,9 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
     protected GameObject Gamemanager;
     EnemySpawner spawner;
     protected GameBoss GameBoss;
+    protected float pointWorth;                                                                                          // Hoeveel punten de speler krijgt als hij de enemy dood maakt
+    protected float moveSpeed;
+
 
 
 
@@ -26,8 +29,7 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
         rightTop = Camera.main.ViewportToWorldPoint(new Vector3(1f, 1f, 20f));                                                  // haalt boven rechtse hoek van het speelveld  
         leftBottom = Camera.main.ViewportToWorldPoint(new Vector3(0f, 0f, 20f));                                                // haalt linker onderste hoek van het speelveld
         rb = GetComponent<Rigidbody>();
-        Vector3 transformdown = transform.right * 1f;
-        rb.linearVelocity = transformdown * MoveSpeed;
+        rb.AddForce(Vector3.right * -moveSpeed);
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
         Gamemanager = GameObject.FindWithTag("GameManager");
@@ -39,6 +41,7 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
         if (transform.position.x <= leftBottom.x - 3)                                                                           // Als de transform van het object aan de linkerkant het scherm verlaat
         {
             Destroy(gameObject);                                                                                                // verwijder het object
+            spawner.enemyCount--;
         }
     }
 
@@ -53,7 +56,7 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
 
     public virtual void OnTriggerEnter(Collider collission)
     {
-        print(" hit base");
+        print("hit base");
         if (collission.gameObject.tag == "Bullet")                                                                              // Als het object de tag "Player" heeft
         {
             health -= 50;                                                                                                       // krijgt damage
@@ -64,6 +67,7 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
     {
         if (health <= 0)
         {
+            GameBoss.CurrentScore += pointWorth;
             Destroy(gameObject);
         }
     }
@@ -83,10 +87,10 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
         }
 
         //als enemy aan de linkerkant van het scherm is doodmaken zodat de waves correct blijven werken
-        if(transform.position.x <= -22.5f)
-        {
-            spawner.enemyCount--;
-            Destroy(gameObject);
-        }
+        //if(transform.position.x <= -22.5f)
+        //{
+
+        //    Destroy(gameObject);
+        //}
     }
 }
