@@ -12,6 +12,9 @@ public class PlayerController : MonoBehaviour
     [SerializeField] public float Playerhealth = 500;
     private GameObject Gamemanager;
     private GameBoss GameBoss;
+    [SerializeField] private GameObject Bubbles1;
+    [SerializeField] private GameObject Bubbles2;
+    private float BubbleDelay = 1f;
 
     void Start()
     {
@@ -28,6 +31,18 @@ public class PlayerController : MonoBehaviour
             if (Input.GetKey(KeyCode.W))
             {
                 rb.position = new Vector3(rb.position.x, rb.position.y, rb.position.z + speed * Time.deltaTime);
+                Bubbles1.SetActive(true);
+                Bubbles2.SetActive(true);
+            }
+            else
+            {
+                BubbleDelay -= Time.deltaTime;
+                if (BubbleDelay <= 0)
+                {
+                    Bubbles1.SetActive(false);
+                    Bubbles2.SetActive(false);
+                    BubbleDelay = 1f;
+                }
             }
 
             if (Input.GetKey(KeyCode.D))
