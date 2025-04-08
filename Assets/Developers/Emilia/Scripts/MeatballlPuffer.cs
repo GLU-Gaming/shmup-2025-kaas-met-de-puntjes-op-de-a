@@ -51,6 +51,10 @@ public class MeatballlPuffer : Enemy
 
     public void ExplodeOnDeath()
     {
-        Instantiate(puffballexplosion, transform.position, Quaternion.identity);
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+            Instantiate(puffballexplosion, transform.position, Quaternion.identity);
+        }
     }
 }
