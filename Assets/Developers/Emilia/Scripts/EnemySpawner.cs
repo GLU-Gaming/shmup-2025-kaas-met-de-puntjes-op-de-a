@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Collections;
 using Random = UnityEngine.Random;
+using TMPro;
 
 public class EnemySpawner : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class EnemySpawner : MonoBehaviour
     public class Waves {
         public GameObject[] Enemies;
     }
+
+    [SerializeField] private TMP_Text wavecount;
 
     void Start()
     {
@@ -67,6 +70,7 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator SpawnBarrage(float Delay, float DelayBeforeSpawn = 0f)
     {
         print("Spawning Wave: " + waveCount);
+        wavecount.text = "Wave: " + waveCount;
         yield return new WaitForSeconds(DelayBeforeSpawn);
         for(int i = 0; i < waves[waveCount].Enemies.Length; i++)
         {
