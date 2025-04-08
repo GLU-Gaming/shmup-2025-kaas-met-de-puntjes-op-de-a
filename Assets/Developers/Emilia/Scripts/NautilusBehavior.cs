@@ -17,6 +17,7 @@ public class NautilusBehavior : Enemy
     protected override void Update()
     {
      base.Update();
+    
     }
 
     public override void OnTriggerEnter(Collider collision)
@@ -29,5 +30,15 @@ public class NautilusBehavior : Enemy
             damageCooldown += 2f;
         }
         base.FakeTriggerEnter(collision);
+    }
+    public override void DespawsnOnExit()
+    {
+        if (transform.position.x <= leftBottom.x - 3)                                                                        // Als de transform van het object aan de linkerkant het scherm verlaat
+        {
+            base.DespawsnOnExit();
+            playerScript.Playerhealth -= damage;
+
+            //explode on hit
+        }
     }
 }

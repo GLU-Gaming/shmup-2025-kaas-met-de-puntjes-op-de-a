@@ -26,7 +26,6 @@ public class BossBehavior : MonoBehaviour
     
     void Update()
     {
-        Debug.Log(ActiveStatus);
         //movement
         if (ActiveStatus == true) 
         {
@@ -79,7 +78,7 @@ public class BossBehavior : MonoBehaviour
         if (startedMoving == false) 
         {
             Debug.Log("started moving");
-            transform.position = new Vector3(16f, 0, -2f);
+            gameObject.transform.position = new Vector3(16f, 0, -2f);
             rb.AddForce(transform.up * moveSpeed * 1);
             startedMoving = true;
         }

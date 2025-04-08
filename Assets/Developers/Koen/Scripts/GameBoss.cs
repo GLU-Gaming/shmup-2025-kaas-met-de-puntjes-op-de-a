@@ -36,7 +36,6 @@ public class GameBoss : MonoBehaviour
         if (playerScript.Playerhealth < 1)
         {
             gameEnd = true;
-            //Time.timeScale = 0;
             DeathPopup.SetActive(true);
         }
         else

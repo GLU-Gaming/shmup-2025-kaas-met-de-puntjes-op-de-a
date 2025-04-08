@@ -29,9 +29,9 @@ public class PizzaFish : Enemy
 
     public override void DespawsnOnExit()
     {
-        base.DespawsnOnExit();
         if (transform.position.x <= leftBottom.x - 3)                                                                           // Als de transform van het object aan de linkerkant het scherm verlaat
         {
+            base.DespawsnOnExit();
             playerScript.Playerhealth -= damage;
         }
     }

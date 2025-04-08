@@ -67,7 +67,6 @@ public class MeatballlPuffer : Enemy
         {
             Instantiate(puffballexplosion, transform.position, Quaternion.identity);
             explosionBool = true;
-            Debug.Log("if2");
         }
 
     }

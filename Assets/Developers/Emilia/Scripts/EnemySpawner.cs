@@ -16,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private GameBoss GameBoss;
     public int enemyCount = 0;
     public int waveCount = 0;
-
+    private bool SpawnedBoss = false;
     bool SpawnDebounce = false;
 
     [System.Serializable]
@@ -75,10 +75,12 @@ public class EnemySpawner : MonoBehaviour
             enemyCount++;
             yield return new WaitForSeconds(Delay);
 
-            if (waveCount == 5)
+            if (waveCount == 5 && SpawnedBoss != true)
             {
                 Debug.Log("bosstime");
                 BossScript.ActiveStatus = true;
+                BossScript.startedMoving = false;
+                SpawnedBoss = true;
             }
         }
         SpawnDebounce = false;
