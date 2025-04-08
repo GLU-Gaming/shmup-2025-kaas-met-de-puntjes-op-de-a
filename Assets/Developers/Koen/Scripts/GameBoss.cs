@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class GameBoss : MonoBehaviour
 {
     [SerializeField] private Image healthImage;
+    [SerializeField] private GameObject bosshealthGO;
     [SerializeField] private Image bossHealthImage;
     private GameObject player;
     private PlayerController playerScript;
@@ -18,20 +19,23 @@ public class GameBoss : MonoBehaviour
     {
         player = GameObject.FindWithTag("Player");
         playerScript = player.GetComponent<PlayerController>();
-        //Boss = GameObject.FindWithTag("Boss");
-        //BossScript = Boss.GetComponent<BossBehavior>();
+        Boss = GameObject.FindWithTag("Boss");
+        BossScript = Boss.GetComponent<BossBehavior>();
     }
 
     void Update()
     {
         healthImage.fillAmount = playerScript.Playerhealth / 500;
-        //bossHealthImage.fillAmount = BossScript.bossHealth / 2000;
         ScoreText.text = "Score: <br>" + CurrentScore;
 
-        if (playerScript.Playerhealth < 0)
+        if (BossScript.ActiveStatus == true)
+        {
+            bosshealthGO.gameObject.SetActive(true);
+            bossHealthImage.fillAmount = BossScript.bossHealth / 2000;
+        }
+        if (playerScript.Playerhealth < 1)
         {
             gameEnd = true;
-            //Time.timeScale = 0;
             DeathPopup.SetActive(true);
         }
         else

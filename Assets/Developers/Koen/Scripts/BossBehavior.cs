@@ -1,3 +1,4 @@
+using System.Transactions;
 using Unity.Multiplayer.Center.Common;
 using UnityEngine;
 
@@ -12,13 +13,13 @@ public class BossBehavior : MonoBehaviour
     private float ChoiceTimer;                                          // hoelang tot de volgende keuze
     [SerializeField] private float BaseChoiceTimer = 2f;                // hoe lang de boss wacht met het kiezen van een actie
     private float swipeorspit;                                          // variabele waarmee de boss kiest tussen swipen of spitten
-
+    public bool ActiveStatus = false;
     [SerializeField] public float bossHealth = 2000f;                                   // hoeveel health de boss heeft
+    public bool startedMoving = false;
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        rb.AddForce(transform.up * moveSpeed * 1);
         ChoiceTimer = BaseChoiceTimer;
     }
 
@@ -26,35 +27,40 @@ public class BossBehavior : MonoBehaviour
     void Update()
     {
         //movement
-        if (transform.position.z >= 8)
+        if (ActiveStatus == true) 
         {
-            rb.linearVelocity = Vector3.zero;
-            rb.AddForce(transform.up * moveSpeed * - 1);
-        }
-        else if (transform.position.z <= -8)
-        {
-            rb.linearVelocity = Vector3.zero;
-            rb.AddForce(transform.up * moveSpeed * 1);
-        }
+            StartMoving();
+            if (transform.position.z >= 8)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.AddForce(transform.up * moveSpeed * -1);
+            }
+            else if (transform.position.z <= -8)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.AddForce(transform.up * moveSpeed * 1);
+            }
 
-        //attacks
-        ChoiceTimer -= Time.deltaTime;
-        if (ChoiceTimer <= 0)
-        {
-            ChoiceTimer = 0f;
-            ChoiceTimer += BaseChoiceTimer;
-            swipeorspit = Random.Range(0, 10);
-            if (swipeorspit >= 5)
+            //attacks
+            ChoiceTimer -= Time.deltaTime;
+            if (ChoiceTimer <= 0)
             {
-                Debug.Log("Swipe");
-                SwipeArm();
-            }
-            else
-            {
-                Debug.Log("Spit");
-                SpitMeatball();
+                ChoiceTimer = 0f;
+                ChoiceTimer += BaseChoiceTimer;
+                swipeorspit = Random.Range(0, 10);
+                if (swipeorspit >= 5)
+                {
+                    Debug.Log("Swipe");
+                    SwipeArm();
+                }
+                else
+                {
+                    Debug.Log("Spit");
+                    SpitMeatball();
+                }
             }
         }
+        
     }
 
     private void SpitMeatball()
@@ -67,9 +73,23 @@ public class BossBehavior : MonoBehaviour
         Instantiate(arm, armSpawn.transform.position, armSpawn.transform.rotation);
     }
 
+    private void StartMoving()
+    {
+        if (startedMoving == false) 
+        {
+            Debug.Log("started moving");
+            gameObject.transform.position = new Vector3(16f, 0, -2f);
+            rb.AddForce(transform.up * moveSpeed * 1);
+            startedMoving = true;
+        }
+        else
+        {
+            Debug.Log("already moving");
+        }
+    }
     void OnTriggerEnter(Collider collission)
     {
-        if (collission.gameObject.tag == "Bullet")                                                                              // Als het object de tag "Bullet" heeft
+        if (collission.gameObject.tag == "Bullet" && ActiveStatus == true)                                                                              // Als het object de tag "Bullet" heeft
         {
             bossHealth -= 50;
         }

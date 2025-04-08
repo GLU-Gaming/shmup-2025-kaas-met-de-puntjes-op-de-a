@@ -1,3 +1,6 @@
+using System.Linq.Expressions;
+using Unity.VisualScripting;
+using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class MeatballlPuffer : Enemy
@@ -6,6 +9,7 @@ public class MeatballlPuffer : Enemy
     private float damageCooldown;
 
     [SerializeField] private GameObject puffballexplosion;
+    public bool explosionBool = false;
 
     protected void Start()
     {
@@ -30,8 +34,11 @@ public class MeatballlPuffer : Enemy
         Death();
         damageCooldown -= Time.deltaTime;
         DespawsnOnExit();
-
-        ExplodeOnDeath();
+        if (health <= 0 && explosionBool == false)
+        {
+            ExplodeOnDeath();
+            explosionBool = true;
+        }
     }
 
     public override void OnTriggerEnter(Collider collision)
@@ -42,8 +49,13 @@ public class MeatballlPuffer : Enemy
             damageCooldown = 0;
             damageCooldown += 2f;
 
-            //explode on hit
-            Instantiate(puffballexplosion, transform.position, Quaternion.identity);
+            ////explode on hit
+            //if (explosionBool == false)
+            //{
+            //    ExplodeOnDeath();
+            //    explosionBool = true;
+            //    Debug.Log("if1");
+            //}
 
         }
         base.OnTriggerEnter(collision);
@@ -51,6 +63,11 @@ public class MeatballlPuffer : Enemy
 
     public void ExplodeOnDeath()
     {
-        Instantiate(puffballexplosion, transform.position, Quaternion.identity);
+        if (explosionBool == false)
+        {
+            Instantiate(puffballexplosion, transform.position, Quaternion.identity);
+            explosionBool = true;
+        }
+
     }
 }

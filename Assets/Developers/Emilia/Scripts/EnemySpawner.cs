@@ -5,6 +5,8 @@ using Random = UnityEngine.Random;
 
 public class EnemySpawner : MonoBehaviour
 {
+    public GameObject Boss;
+    public BossBehavior BossScript;
     [SerializeField] List<Waves> waves = new List<Waves>();
     public Transform[] spawnPoints;
     public float spawnTime = 5f;
@@ -14,7 +16,7 @@ public class EnemySpawner : MonoBehaviour
     private GameBoss GameBoss;
     public int enemyCount = 0;
     public int waveCount = 0;
-
+    private bool SpawnedBoss = false;
     bool SpawnDebounce = false;
 
     [System.Serializable]
@@ -28,6 +30,8 @@ public class EnemySpawner : MonoBehaviour
         GameBoss = Gamemanager.GetComponent<GameBoss>();
         SpawnDebounce=true;
         StartCoroutine(SpawnBarrage(2f, 2f));
+        Boss = GameObject.FindWithTag("Boss");
+        BossScript = Boss.GetComponent<BossBehavior>();
     }
 
     private void FixedUpdate()
@@ -70,6 +74,14 @@ public class EnemySpawner : MonoBehaviour
             Instantiate(waves[waveCount].Enemies[i], spawnPoints[spawnPointIndex].position, spawnPoints[spawnPointIndex].rotation);
             enemyCount++;
             yield return new WaitForSeconds(Delay);
+
+            if (waveCount == 5 && SpawnedBoss != true)
+            {
+                Debug.Log("bosstime");
+                BossScript.ActiveStatus = true;
+                BossScript.startedMoving = false;
+                SpawnedBoss = true;
+            }
         }
         SpawnDebounce = false;
     }

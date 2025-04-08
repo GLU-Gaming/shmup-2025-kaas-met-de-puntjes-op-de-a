@@ -66,7 +66,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8292875413504419226, guid: 246379b63ecda524388bb685cb676330, type: 3}
       propertyPath: looping
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -129,6 +129,10 @@ PrefabInstance:
     - target: {fileID: 4590021454189054266, guid: 24ba73fc374b9374a93b7013e3faafc6, type: 3}
       propertyPath: m_Name
       value: explosion prefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 6993692980106827316, guid: 24ba73fc374b9374a93b7013e3faafc6, type: 3}
+      propertyPath: looping
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6993692980106827316, guid: 24ba73fc374b9374a93b7013e3faafc6, type: 3}
       propertyPath: stopAction
