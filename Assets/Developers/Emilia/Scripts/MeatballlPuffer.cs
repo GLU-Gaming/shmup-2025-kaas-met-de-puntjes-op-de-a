@@ -30,8 +30,10 @@ public class MeatballlPuffer : Enemy
         Death();
         damageCooldown -= Time.deltaTime;
         DespawsnOnExit();
-
-        ExplodeOnDeath();
+        if (health <= 0)
+        {
+            ExplodeOnDeath();
+        }
     }
 
     public override void OnTriggerEnter(Collider collision)
@@ -50,11 +52,8 @@ public class MeatballlPuffer : Enemy
     }
 
     public void ExplodeOnDeath()
-    {
-        if(health <= 0)
-        {
+    {   
             Destroy(gameObject);
             Instantiate(puffballexplosion, transform.position, Quaternion.identity);
-        }
     }
 }

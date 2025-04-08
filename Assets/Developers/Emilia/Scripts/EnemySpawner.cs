@@ -77,6 +77,7 @@ public class EnemySpawner : MonoBehaviour
 
             if (waveCount == 5)
             {
+                Debug.Log("bosstime");
                 BossScript.ActiveStatus = true;
             }
         }

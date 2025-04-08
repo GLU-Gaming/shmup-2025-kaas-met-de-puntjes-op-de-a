@@ -1,3 +1,4 @@
+using System.Transactions;
 using Unity.Multiplayer.Center.Common;
 using UnityEngine;
 
@@ -14,20 +15,22 @@ public class BossBehavior : MonoBehaviour
     private float swipeorspit;                                          // variabele waarmee de boss kiest tussen swipen of spitten
     public bool ActiveStatus = false;
     [SerializeField] public float bossHealth = 2000f;                                   // hoeveel health de boss heeft
+    public bool startedMoving = false;
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
-        rb.AddForce(transform.up * moveSpeed * 1);
         ChoiceTimer = BaseChoiceTimer;
     }
 
     
     void Update()
     {
+        Debug.Log(ActiveStatus);
         //movement
         if (ActiveStatus == true) 
         {
+            StartMoving();
             if (transform.position.z >= 8)
             {
                 rb.linearVelocity = Vector3.zero;
@@ -71,6 +74,20 @@ public class BossBehavior : MonoBehaviour
         Instantiate(arm, armSpawn.transform.position, armSpawn.transform.rotation);
     }
 
+    private void StartMoving()
+    {
+        if (startedMoving == false) 
+        {
+            Debug.Log("started moving");
+            transform.position = new Vector3(16f, 0, -2f);
+            rb.AddForce(transform.up * moveSpeed * 1);
+            startedMoving = true;
+        }
+        else
+        {
+            Debug.Log("already moving");
+        }
+    }
     void OnTriggerEnter(Collider collission)
     {
         if (collission.gameObject.tag == "Bullet" && ActiveStatus == true)                                                                              // Als het object de tag "Bullet" heeft
