@@ -5,6 +5,8 @@ public class MeatballlPuffer : Enemy
     [SerializeField] public float damage = 50;
     private float damageCooldown;
 
+    [SerializeField] private GameObject puffballexplosion;
+
     protected void Start()
     {
         pointWorth = 150;
@@ -41,12 +43,14 @@ public class MeatballlPuffer : Enemy
             damageCooldown += 2f;
 
             //explode on hit
+            Instantiate(puffballexplosion, transform.position, Quaternion.identity);
+
         }
         base.OnTriggerEnter(collision);
     }
 
     public void ExplodeOnDeath()
     {
-
+        Instantiate(puffballexplosion, transform.position, Quaternion.identity);
     }
 }
