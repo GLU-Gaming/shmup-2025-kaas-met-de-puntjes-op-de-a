@@ -9,7 +9,7 @@ public class WaveAnimation : MonoBehaviour
 
     void Start()
     {
-        enemyspawner.GetComponent<playwaveanimat>();
+        //enemyspawner.GetComponent<playwaveanimati>();
     }
 
     void Update()
