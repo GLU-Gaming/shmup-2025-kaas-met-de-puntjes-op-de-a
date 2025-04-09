@@ -8,6 +8,7 @@ public class NautilusBehavior : Enemy
 
     void Start()
     {
+        health = 200;
         pointWorth = 50;
         moveSpeed = 300f;
         rb.AddForce(transform.right * moveSpeed);

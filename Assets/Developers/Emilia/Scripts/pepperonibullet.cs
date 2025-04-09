@@ -5,12 +5,16 @@ public class pepperonibullet : MonoBehaviour
     [SerializeField] private float TimeAlive = 2f;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private float MoveSpeed = 1f;
-    
-    
+    private GameObject player;
+    private PlayerController playerScript;
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         rb.AddForce(Vector3.right * -MoveSpeed);
+        player = GameObject.FindWithTag("Player");
+        playerScript = player.GetComponent<PlayerController>();
     }
 
     // Update is called once per frame
@@ -22,8 +26,12 @@ public class pepperonibullet : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    private void OnTriggerEnter()
+    private void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (other.gameObject.CompareTag("Player"))
+        {
+            playerScript.Playerhealth -= 50;
+            Destroy(gameObject);
+        }
     }
 }

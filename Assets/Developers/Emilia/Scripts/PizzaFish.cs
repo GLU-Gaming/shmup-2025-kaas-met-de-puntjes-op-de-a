@@ -12,6 +12,7 @@ public class PizzaFish : Enemy
 
     private void Start()
     {
+        health = 150;
         shootTimer = shootInterval;
         pointWorth = 100;
         moveSpeed = 200f;

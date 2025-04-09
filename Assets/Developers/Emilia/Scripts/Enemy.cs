@@ -11,7 +11,7 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
 
     private GameObject player;
     public PlayerController playerScript;
-    [SerializeField] public float health = 150;
+    [SerializeField] public float health;
     protected GameObject Gamemanager;
     EnemySpawner spawner;
     protected GameBoss GameBoss;

@@ -13,6 +13,7 @@ public class MeatballlPuffer : Enemy
 
     protected void Start()
     {
+        health = 100;
         pointWorth = 150;
         moveSpeed = 500f;
         rb.AddForce(transform.right * moveSpeed);
