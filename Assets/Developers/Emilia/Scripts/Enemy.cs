@@ -56,7 +56,6 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
 
     public virtual void OnTriggerEnter(Collider collission)
     {
-        print("hit base");
         if (collission.gameObject.tag == "Bullet")                                                                              // Als het object de tag "Player" heeft
         {
             health -= 50;                                                                                                       // krijgt damage

@@ -9,8 +9,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7722541874699828242}
-  - component: {fileID: 4842279894509519269}
   - component: {fileID: 2524774483320752667}
+  - component: {fileID: 4842279894509519269}
   m_Layer: 0
   m_Name: foreground
   m_TagString: Untagged
@@ -69,19 +69,6 @@ Transform:
   - {fileID: 1621162415830277792}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4842279894509519269
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5754208401849052223}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b2e477c609b58ae4ab4446d983e9f450, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  newTerrain: {fileID: 0}
 --- !u!54 &2524774483320752667
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -109,6 +96,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 124
   m_CollisionDetection: 0
+--- !u!114 &4842279894509519269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5754208401849052223}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2e477c609b58ae4ab4446d983e9f450, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  newTerrain: {fileID: 5754208401849052223}
 --- !u!1001 &706743520215573
 PrefabInstance:
   m_ObjectHideFlags: 0
