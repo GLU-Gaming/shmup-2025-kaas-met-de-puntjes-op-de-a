@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     private bool SpawnedBoss = false;
     bool SpawnDebounce = false;
 
-    bool playWaveAnimation = false;
+    [SerializeField] Animator playWaveAnimation;
 
     [System.Serializable]
     public class Waves {
@@ -73,7 +73,7 @@ public class EnemySpawner : MonoBehaviour
     {
         print("Spawning Wave: " + waveCount);
         wavecount.text = "Wave: " + waveCount + 1;
-        playWaveAnimation = true;
+        PlayWaveAnimation();
 
 
 
@@ -94,5 +94,10 @@ public class EnemySpawner : MonoBehaviour
             }
         }
         SpawnDebounce = false;
+    }
+
+    private void PlayWaveAnimation()
+    {
+        playWaveAnimation.Play("waves2");
     }
 }
