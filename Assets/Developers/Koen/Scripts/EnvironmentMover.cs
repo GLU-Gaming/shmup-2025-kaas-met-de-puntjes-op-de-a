@@ -21,7 +21,7 @@ public class EnvironmentMover : MonoBehaviour
             Instantiate(newTerrain, TerrainSpawn.transform.position, gameObject.transform.rotation);
             SpawnedSuccessor = true;
         }
-        else if(rb.position.x <= 180)
+        else if(rb.position.x <= 170)
         {
             Destroy(gameObject);
         }

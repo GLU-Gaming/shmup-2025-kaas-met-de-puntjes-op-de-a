@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossBehavior : MonoBehaviour
 {   
     private Rigidbody rb;
-    private float moveSpeed = 200f;                                     // hoe snel de boss beweegt
+    private float moveSpeed = 150f;                                     // hoe snel de boss beweegt
     [SerializeField] private GameObject projectile;                     // wat de boss schiet
     [SerializeField] private GameObject projectileSpawn;                // waar de spit projectiles spawnen
     [SerializeField] private GameObject arm;                            // wat de boss swiped
@@ -82,10 +82,7 @@ public class BossBehavior : MonoBehaviour
             rb.AddForce(transform.up * moveSpeed * 1);
             startedMoving = true;
         }
-        else
-        {
-            Debug.Log("already moving");
-        }
+        
     }
     void OnTriggerEnter(Collider collission)
     {
