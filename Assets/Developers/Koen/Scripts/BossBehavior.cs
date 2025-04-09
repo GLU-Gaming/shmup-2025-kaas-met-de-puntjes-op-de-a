@@ -16,11 +16,16 @@ public class BossBehavior : MonoBehaviour
     public bool ActiveStatus = false;
     [SerializeField] public float bossHealth = 2000f;                                   // hoeveel health de boss heeft
     public bool startedMoving = false;
+    private GameObject Player;
+    private PlayerController playerController;
+
 
     void Start()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         ChoiceTimer = BaseChoiceTimer;
+        Player = GameObject.FindWithTag("Player");
+        playerController = Player.GetComponent<PlayerController>();
     }
 
     
@@ -40,6 +45,13 @@ public class BossBehavior : MonoBehaviour
                 rb.linearVelocity = Vector3.zero;
                 rb.AddForce(transform.up * moveSpeed * 1);
             }
+
+            //enrage mechanic
+            if (bossHealth <= 1000)
+            {
+                BaseChoiceTimer = 1f;
+            }
+
 
             //attacks
             ChoiceTimer -= Time.deltaTime;
@@ -89,6 +101,11 @@ public class BossBehavior : MonoBehaviour
         if (collission.gameObject.tag == "Bullet" && ActiveStatus == true)                                                                              // Als het object de tag "Bullet" heeft
         {
             bossHealth -= 50;
+        }
+        else if (collission.gameObject.tag == "Player" && ActiveStatus == true)
+        {
+            playerController.Playerhealth -= 50;
+            playerController.rb.AddForce(Vector3.right * -moveSpeed * 3);
         }
     }
 

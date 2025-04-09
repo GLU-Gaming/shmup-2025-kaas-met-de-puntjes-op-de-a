@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float ShootingCooldown;                    // current cooldown for shooting
     public float speed = 6.0f;
     private CharacterController controller;
-    private Rigidbody rb;
+    public Rigidbody rb;
     [SerializeField] public float Playerhealth = 500;
     private GameObject Gamemanager;
     private GameBoss GameBoss;
