@@ -69,7 +69,7 @@ public class EnemySpawner : MonoBehaviour
 
     IEnumerator SpawnBarrage(float Delay, float DelayBeforeSpawn = 0f)
     {
-        print("Spawning Wave: " + waveCount);
+        print("Spawning Wave: " + waveCount + 1);
         wavecount.text = "Wave: " + waveCount;
         yield return new WaitForSeconds(DelayBeforeSpawn);
         for(int i = 0; i < waves[waveCount].Enemies.Length; i++)

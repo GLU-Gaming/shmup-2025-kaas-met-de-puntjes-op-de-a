@@ -35,7 +35,7 @@ public class BossBehavior : MonoBehaviour
                 rb.linearVelocity = Vector3.zero;
                 rb.AddForce(transform.up * moveSpeed * -1);
             }
-            else if (transform.position.z <= -8)
+            else if (transform.position.z <= -1.760002)
             {
                 rb.linearVelocity = Vector3.zero;
                 rb.AddForce(transform.up * moveSpeed * 1);
