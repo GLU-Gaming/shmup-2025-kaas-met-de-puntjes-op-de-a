@@ -18,14 +18,18 @@ public class Utilities : MonoBehaviour
 
     public void SettingsMenu()
     {
-        SceneManager.LoadScene("howtoplay");
+        SceneManager.LoadScene("howtoplay", LoadSceneMode.Additive);
+    }
+    public void CloseSettings()
+    {
+        SceneManager.UnloadSceneAsync("howtoplay");
     }
 
     public void ReturnToMain()
     {
         GameBoss.gameEnd = false;
         //Time.timeScale = 1;
-        SceneManager.LoadScene("start");
+        SceneManager.LoadScene ("start");
     }
 
     public void QuitGame()
