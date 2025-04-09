@@ -14,6 +14,7 @@ public class GameBoss : MonoBehaviour
     public float CurrentScore = 100;
     [SerializeField] private TMP_Text ScoreText;
     [SerializeField] private GameObject DeathPopup;
+    [SerializeField] private GameObject WinnerPopup;
     public bool gameEnd;
     void Start()
     {
@@ -37,6 +38,12 @@ public class GameBoss : MonoBehaviour
         {
             gameEnd = true;
             DeathPopup.SetActive(true);
+        }
+        else if (BossScript.bossHealth < 1)
+        {
+            gameEnd = true;
+            BossScript.HeDead = true;
+            WinnerPopup.SetActive(true);
         }
         else
         {

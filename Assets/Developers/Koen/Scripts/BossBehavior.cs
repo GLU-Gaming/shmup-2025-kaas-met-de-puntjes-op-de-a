@@ -18,6 +18,7 @@ public class BossBehavior : MonoBehaviour
     public bool startedMoving = false;
     private GameObject Player;
     private PlayerController playerController;
+    public bool HeDead = false;
 
 
     void Start()
@@ -40,7 +41,7 @@ public class BossBehavior : MonoBehaviour
                 rb.linearVelocity = Vector3.zero;
                 rb.AddForce(transform.up * moveSpeed * -1);
             }
-            else if (transform.position.z <= -1.760002)
+            else if (transform.position.z <= -1.760002 && HeDead == false)
             {
                 rb.linearVelocity = Vector3.zero;
                 rb.AddForce(transform.up * moveSpeed * 1);
@@ -55,7 +56,7 @@ public class BossBehavior : MonoBehaviour
 
             //attacks
             ChoiceTimer -= Time.deltaTime;
-            if (ChoiceTimer <= 0)
+            if (ChoiceTimer <= 0 && HeDead == false)
             {
                 ChoiceTimer = 0f;
                 ChoiceTimer += BaseChoiceTimer;
