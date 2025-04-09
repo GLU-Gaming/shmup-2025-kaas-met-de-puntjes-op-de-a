@@ -20,9 +20,6 @@ public class EnemySpawner : MonoBehaviour
     private bool SpawnedBoss = false;
     bool SpawnDebounce = false;
 
-    [SerializeField] bool playWaveAnimation;
-    public Animator animator;
-
     [System.Serializable]
     public class Waves {
         public GameObject[] Enemies;
@@ -73,10 +70,7 @@ public class EnemySpawner : MonoBehaviour
     IEnumerator SpawnBarrage(float Delay, float DelayBeforeSpawn = 0f)
     {
         print("Spawning Wave: " + waveCount);
-        wavecount.text = "Wave: " + waveCount + 1;
-        animator.Play("waves2");
-
-
+        wavecount.text = "Wave: " + waveCount;
 
         yield return new WaitForSeconds(DelayBeforeSpawn);
         for(int i = 0; i < waves[waveCount].Enemies.Length; i++)
@@ -86,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
             enemyCount++;
             yield return new WaitForSeconds(Delay);
 
-            if (waveCount == 5 && SpawnedBoss != true)
+            if (waveCount == 6 && SpawnedBoss != true)
             {
                 Debug.Log("bosstime");
                 BossScript.ActiveStatus = true;

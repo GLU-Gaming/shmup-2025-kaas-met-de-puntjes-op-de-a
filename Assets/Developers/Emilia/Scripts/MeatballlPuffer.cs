@@ -1,6 +1,5 @@
 using System.Linq.Expressions;
 using Unity.VisualScripting;
-using UnityEditor.PackageManager;
 using UnityEngine;
 
 public class MeatballlPuffer : Enemy
@@ -49,15 +48,6 @@ public class MeatballlPuffer : Enemy
             playerScript.Playerhealth -= damage;                                                                                 // doe damage
             damageCooldown = 0;
             damageCooldown += 2f;
-
-            ////explode on hit
-            //if (explosionBool == false)
-            //{
-            //    ExplodeOnDeath();
-            //    explosionBool = true;
-            //    Debug.Log("if1");
-            //}
-
         }
         base.OnTriggerEnter(collision);
     }

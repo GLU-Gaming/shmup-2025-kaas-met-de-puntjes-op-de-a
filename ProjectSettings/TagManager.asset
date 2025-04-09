@@ -9,6 +9,7 @@ TagManager:
   - Boss
   - DeathPopup
   - GameManager
+  - EnemySpawner
   layers:
   - Default
   - TransparentFX
