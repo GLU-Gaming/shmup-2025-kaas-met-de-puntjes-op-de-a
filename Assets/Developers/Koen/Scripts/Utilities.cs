@@ -7,7 +7,7 @@ public class Utilities : MonoBehaviour
     private void Start()
     {
         Gamemanager = GameObject.FindWithTag("GameManager");
-        GameBoss = Gamemanager.GetComponent<GameBoss>();
+        //GameBoss = Gamemanager.GetComponent<GameBoss>();
     }
     public void StartGame()
     {

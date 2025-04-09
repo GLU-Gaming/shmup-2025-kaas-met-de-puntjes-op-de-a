@@ -20,6 +20,8 @@ public class EnemySpawner : MonoBehaviour
     private bool SpawnedBoss = false;
     bool SpawnDebounce = false;
 
+    bool playWaveAnimation = false;
+
     [System.Serializable]
     public class Waves {
         public GameObject[] Enemies;
@@ -71,6 +73,10 @@ public class EnemySpawner : MonoBehaviour
     {
         print("Spawning Wave: " + waveCount);
         wavecount.text = "Wave: " + waveCount + 1;
+        playWaveAnimation = true;
+
+
+
         yield return new WaitForSeconds(DelayBeforeSpawn);
         for(int i = 0; i < waves[waveCount].Enemies.Length; i++)
         {
