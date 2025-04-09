@@ -80,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
             enemyCount++;
             yield return new WaitForSeconds(Delay);
 
-            if (waveCount == 6 && SpawnedBoss != true)
+            if (waveCount == 7 && SpawnedBoss != true)
             {
                 Debug.Log("bosstime");
                 BossScript.ActiveStatus = true;

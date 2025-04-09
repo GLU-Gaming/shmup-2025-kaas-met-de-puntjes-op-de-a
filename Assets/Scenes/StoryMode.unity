@@ -1373,7 +1373,7 @@ RectTransform:
   m_GameObject: {fileID: 595345214}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.9, y: 0.9, z: 0.9}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1134971390}
@@ -3753,6 +3753,17 @@ MonoBehaviour:
     - {fileID: 6789217126609386354, guid: 4b83688c501b11c46b1d8f083a535e92, type: 3}
     - {fileID: 6789217126609386354, guid: 4b83688c501b11c46b1d8f083a535e92, type: 3}
   - Enemies:
+    - {fileID: 6789217126609386354, guid: 4b83688c501b11c46b1d8f083a535e92, type: 3}
+    - {fileID: 3800931382548034710, guid: 0cfcd7567d37bae41a0c8e221d8451b3, type: 3}
+    - {fileID: 1238196886955473241, guid: f8fc4140b7b0fb7419d0e0aec088a1e5, type: 3}
+    - {fileID: 3800931382548034710, guid: 0cfcd7567d37bae41a0c8e221d8451b3, type: 3}
+    - {fileID: 1238196886955473241, guid: f8fc4140b7b0fb7419d0e0aec088a1e5, type: 3}
+    - {fileID: 3800931382548034710, guid: 0cfcd7567d37bae41a0c8e221d8451b3, type: 3}
+    - {fileID: 6789217126609386354, guid: 4b83688c501b11c46b1d8f083a535e92, type: 3}
+    - {fileID: 3800931382548034710, guid: 0cfcd7567d37bae41a0c8e221d8451b3, type: 3}
+    - {fileID: 1238196886955473241, guid: f8fc4140b7b0fb7419d0e0aec088a1e5, type: 3}
+    - {fileID: 1238196886955473241, guid: f8fc4140b7b0fb7419d0e0aec088a1e5, type: 3}
+  - Enemies:
     - {fileID: 1238196886955473241, guid: f8fc4140b7b0fb7419d0e0aec088a1e5, type: 3}
   spawnPoints:
   - {fileID: 1523140985}
@@ -4484,7 +4495,7 @@ Transform:
   m_GameObject: {fileID: 1944569382}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.2196, y: 0, z: 18.6}
+  m_LocalPosition: {x: -0.2196, y: 0, z: 18}
   m_LocalScale: {x: 44.66, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
