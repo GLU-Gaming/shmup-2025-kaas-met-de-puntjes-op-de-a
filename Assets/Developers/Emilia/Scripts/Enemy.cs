@@ -84,12 +84,5 @@ public abstract class Enemy : MonoBehaviour //abstract moet erbij omdat er geen 
             Destroy(gameObject);
             spawner.enemyCount--;
         }
-
-        //als enemy aan de linkerkant van het scherm is doodmaken zodat de waves correct blijven werken
-        //if(transform.position.x <= -22.5f)
-        //{
-
-        //    Destroy(gameObject);
-        //}
     }
 }

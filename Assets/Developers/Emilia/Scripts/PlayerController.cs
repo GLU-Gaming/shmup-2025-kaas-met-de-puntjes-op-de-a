@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        Mathf.Clamp(Playerhealth, -1, 500);                             // Clamp the player's health between 0 and 500
         if (GameBoss.gameEnd != true)
         {
             if (Input.GetKey(KeyCode.W))

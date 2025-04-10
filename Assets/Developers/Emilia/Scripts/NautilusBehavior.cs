@@ -1,9 +1,12 @@
+using Unity.Mathematics;
 using UnityEngine;
 
 public class NautilusBehavior : Enemy
 {
     [SerializeField] public float damage = 50;
     private float damageCooldown;
+    [SerializeField] private GameObject cheesyPickup;
+    private quaternion cheesyPickupRotation;
 
 
     void Start()
@@ -12,7 +15,7 @@ public class NautilusBehavior : Enemy
         pointWorth = 50;
         moveSpeed = 300f;
         rb.AddForce(transform.right * moveSpeed);
-
+        cheesyPickupRotation = quaternion.Euler(53, -80, -156);
     }
 
     protected override void Update()
@@ -38,8 +41,14 @@ public class NautilusBehavior : Enemy
         {
             base.DespawsnOnExit();
             playerScript.Playerhealth -= damage;
-
-            //explode on hit
+        }
+    }
+    public override void Death()
+    {
+        if (health <= 0)
+        {
+            Instantiate(cheesyPickup, transform.position, cheesyPickupRotation);
+            base.Death();
         }
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossBehavior : MonoBehaviour
 {   
     private Rigidbody rb;
-    private float moveSpeed = 150f;                                     // hoe snel de boss beweegt
+    private float moveSpeed = 25f;                                     // hoe snel de boss beweegt
     [SerializeField] private GameObject projectile;                     // wat de boss schiet
     [SerializeField] private GameObject projectileSpawn;                // waar de spit projectiles spawnen
     [SerializeField] private GameObject arm;                            // wat de boss swiped

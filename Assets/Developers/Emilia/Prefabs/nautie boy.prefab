@@ -158,3 +158,4 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   health: 150
   damage: 50
+  cheesyPickup: {fileID: 1625513556141815391, guid: 229f103b9a348fa4baf904366d76215b, type: 3}

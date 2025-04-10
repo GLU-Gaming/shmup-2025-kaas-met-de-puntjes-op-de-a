@@ -1,5 +1,6 @@
 using UnityEngine.SceneManagement;
 using UnityEngine;
+using Unity.VisualScripting;
 public class Utilities : MonoBehaviour
 {
     [SerializeField] private GameObject Gamemanager;
@@ -7,12 +8,18 @@ public class Utilities : MonoBehaviour
     private void Start()
     {
         Gamemanager = GameObject.FindWithTag("GameManager");
-        //GameBoss = Gamemanager.GetComponent<GameBoss>();
+        GameBoss = Gamemanager.GetComponent<GameBoss>();
     }
+    
+
     public void StartGame()
     {
         SceneManager.LoadScene("storymode");
-        GameBoss.gameEnd = false;
+        if (Gamemanager != null)
+        {
+            GameBoss.gameEnd = false;
+
+        }
         Time.timeScale = 1;
     }
 
@@ -27,8 +34,10 @@ public class Utilities : MonoBehaviour
 
     public void ReturnToMain()
     {
-        GameBoss.gameEnd = false;
-        //Time.timeScale = 1;
+        if (Gamemanager != null)
+        {
+            GameBoss.gameEnd = false;
+        }
         SceneManager.LoadScene ("start");
     }
 
